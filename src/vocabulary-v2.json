@@ -1,0 +1,1802 @@
+[
+  {
+    "id": "v2-1-take",
+    "english": "take",
+    "japanese": "～を持っていく、～を連れていく",
+    "group": 1,
+    "page": 93,
+    "source": "IMG_0225.HEIC",
+    "row": 1
+  },
+  {
+    "id": "v2-1-take-~-for-a-walk",
+    "english": "take ~ for a walk",
+    "japanese": "～を散歩に連れていく",
+    "group": 1,
+    "page": 93,
+    "source": "IMG_0225.HEIC",
+    "row": 2
+  },
+  {
+    "id": "v2-1-note",
+    "english": "note",
+    "japanese": "メモ、覚え書き",
+    "group": 1,
+    "page": 93,
+    "source": "IMG_0225.HEIC",
+    "row": 3
+  },
+  {
+    "id": "v2-1-medicine",
+    "english": "medicine",
+    "japanese": "薬",
+    "group": 1,
+    "page": 93,
+    "source": "IMG_0225.HEIC",
+    "row": 4
+  },
+  {
+    "id": "v2-1-join",
+    "english": "join",
+    "japanese": "～に参加する",
+    "group": 1,
+    "page": 94,
+    "source": "IMG_0225.HEIC",
+    "row": 5
+  },
+  {
+    "id": "v2-1-right-now",
+    "english": "right now",
+    "japanese": "ちょうど今",
+    "group": 1,
+    "page": 94,
+    "source": "IMG_0225.HEIC",
+    "row": 6
+  },
+  {
+    "id": "v2-1-i'd-love-to.",
+    "english": "I'd love to.",
+    "japanese": "ぜひとも。",
+    "group": 1,
+    "page": 94,
+    "source": "IMG_0225.HEIC",
+    "row": 7
+  },
+  {
+    "id": "v2-1-court",
+    "english": "court",
+    "japanese": "（テニスなどの）コート",
+    "group": 1,
+    "page": 94,
+    "source": "IMG_0225.HEIC",
+    "row": 8
+  },
+  {
+    "id": "v2-1-soon",
+    "english": "soon",
+    "japanese": "もうすぐ、まもなく",
+    "group": 1,
+    "page": 94,
+    "source": "IMG_0225.HEIC",
+    "row": 9
+  },
+  {
+    "id": "v2-1-see-you-later.",
+    "english": "See you later.",
+    "japanese": "またあとでね。",
+    "group": 1,
+    "page": 94,
+    "source": "IMG_0225.HEIC",
+    "row": 10
+  },
+  {
+    "id": "v2-1-hold",
+    "english": "hold",
+    "japanese": "つかむ",
+    "group": 1,
+    "page": 94,
+    "source": "IMG_0225.HEIC",
+    "row": 11
+  },
+  {
+    "id": "v2-1-hold-on",
+    "english": "hold on",
+    "japanese": "電話を切らないで待つ",
+    "group": 1,
+    "page": 94,
+    "source": "IMG_0225.HEIC",
+    "row": 12
+  },
+  {
+    "id": "v2-1-out",
+    "english": "out",
+    "japanese": "外に、外出して",
+    "group": 1,
+    "page": 94,
+    "source": "IMG_0225.HEIC",
+    "row": 13
+  },
+  {
+    "id": "v2-1-message",
+    "english": "message",
+    "japanese": "伝言、メッセージ",
+    "group": 1,
+    "page": 94,
+    "source": "IMG_0225.HEIC",
+    "row": 14
+  },
+  {
+    "id": "v2-1-sleep",
+    "english": "sleep",
+    "japanese": "眠る",
+    "group": 1,
+    "page": 95,
+    "source": "IMG_0225.HEIC",
+    "row": 15
+  },
+  {
+    "id": "v2-1-living-room",
+    "english": "living room",
+    "japanese": "居間",
+    "group": 1,
+    "page": 95,
+    "source": "IMG_0226.HEIC",
+    "row": 1
+  },
+  {
+    "id": "v2-1-cake",
+    "english": "cake",
+    "japanese": "ケーキ",
+    "group": 1,
+    "page": 95,
+    "source": "IMG_0226.HEIC",
+    "row": 2
+  },
+  {
+    "id": "v2-1-lie",
+    "english": "lie",
+    "japanese": "横になる",
+    "group": 1,
+    "page": 95,
+    "source": "IMG_0226.HEIC",
+    "row": 3
+  },
+  {
+    "id": "v2-1-sofa",
+    "english": "sofa",
+    "japanese": "ソファー",
+    "group": 1,
+    "page": 95,
+    "source": "IMG_0226.HEIC",
+    "row": 4
+  },
+  {
+    "id": "v2-1-laugh",
+    "english": "laugh",
+    "japanese": "笑う",
+    "group": 1,
+    "page": 95,
+    "source": "IMG_0226.HEIC",
+    "row": 5
+  },
+  {
+    "id": "v2-1-give",
+    "english": "give",
+    "japanese": "～を与える",
+    "group": 1,
+    "page": 95,
+    "source": "IMG_0226.HEIC",
+    "row": 6
+  },
+  {
+    "id": "v2-1-cut",
+    "english": "cut",
+    "japanese": "～を切る",
+    "group": 1,
+    "page": 95,
+    "source": "IMG_0226.HEIC",
+    "row": 7
+  },
+  {
+    "id": "v2-1-die",
+    "english": "die",
+    "japanese": "死ぬ",
+    "group": 1,
+    "page": 95,
+    "source": "IMG_0226.HEIC",
+    "row": 8
+  },
+  {
+    "id": "v2-1-break",
+    "english": "break",
+    "japanese": "〈短い〉休憩",
+    "group": 1,
+    "page": 96,
+    "source": "IMG_0226.HEIC",
+    "row": 9
+  },
+  {
+    "id": "v2-1-be-on-a-break",
+    "english": "be on a break",
+    "japanese": "休憩中である",
+    "group": 1,
+    "page": 96,
+    "source": "IMG_0226.HEIC",
+    "row": 10
+  },
+  {
+    "id": "v2-1-take-a-break",
+    "english": "take a break",
+    "japanese": "休憩する",
+    "group": 1,
+    "page": 96,
+    "source": "IMG_0226.HEIC",
+    "row": 11
+  },
+  {
+    "id": "v2-1-wait-for",
+    "english": "wait for",
+    "japanese": "～を待つ",
+    "group": 1,
+    "page": 96,
+    "source": "IMG_0226.HEIC",
+    "row": 12
+  },
+  {
+    "id": "v2-1-buy",
+    "english": "buy",
+    "japanese": "～を買う",
+    "group": 1,
+    "page": 96,
+    "source": "IMG_0226.HEIC",
+    "row": 13
+  },
+  {
+    "id": "v2-1-cold",
+    "english": "cold",
+    "japanese": "寒い、冷たい",
+    "group": 1,
+    "page": 96,
+    "source": "IMG_0226.HEIC",
+    "row": 14
+  },
+  {
+    "id": "v2-1-snack",
+    "english": "snack",
+    "japanese": "軽食、スナック、間食",
+    "group": 1,
+    "page": 96,
+    "source": "IMG_0226.HEIC",
+    "row": 15
+  },
+  {
+    "id": "v2-1-store",
+    "english": "store",
+    "japanese": "店",
+    "group": 1,
+    "page": 96,
+    "source": "IMG_0227.HEIC",
+    "row": 1
+  },
+  {
+    "id": "v2-1-then",
+    "english": "then",
+    "japanese": "それでは、それから、そして",
+    "group": 1,
+    "page": 96,
+    "source": "IMG_0227.HEIC",
+    "row": 2
+  },
+  {
+    "id": "v2-1-online",
+    "english": "online",
+    "japanese": "オンラインで",
+    "group": 1,
+    "page": 97,
+    "source": "IMG_0227.HEIC",
+    "row": 3
+  },
+  {
+    "id": "v2-1-tablet",
+    "english": "tablet",
+    "japanese": "タブレット（PC）",
+    "group": 1,
+    "page": 97,
+    "source": "IMG_0227.HEIC",
+    "row": 4
+  },
+  {
+    "id": "v2-1-homework",
+    "english": "homework",
+    "japanese": "宿題",
+    "group": 1,
+    "page": 97,
+    "source": "IMG_0227.HEIC",
+    "row": 5
+  },
+  {
+    "id": "v2-1-smell",
+    "english": "smell",
+    "japanese": "～のにおいがする",
+    "group": 1,
+    "page": 97,
+    "source": "IMG_0227.HEIC",
+    "row": 6
+  },
+  {
+    "id": "v2-1-cook",
+    "english": "cook",
+    "japanese": "料理をする",
+    "group": 1,
+    "page": 97,
+    "source": "IMG_0227.HEIC",
+    "row": 7
+  },
+  {
+    "id": "v2-1-outside",
+    "english": "outside",
+    "japanese": "外で［に］",
+    "group": 1,
+    "page": 97,
+    "source": "IMG_0227.HEIC",
+    "row": 8
+  },
+  {
+    "id": "v2-1-look-for",
+    "english": "look for",
+    "japanese": "～を探す",
+    "group": 1,
+    "page": 97,
+    "source": "IMG_0227.HEIC",
+    "row": 9
+  },
+  {
+    "id": "v2-1-loudly",
+    "english": "loudly",
+    "japanese": "大声で、騒々しく",
+    "group": 1,
+    "page": 97,
+    "source": "IMG_0227.HEIC",
+    "row": 10
+  },
+  {
+    "id": "v2-2-weather",
+    "english": "weather",
+    "japanese": "天気、天候",
+    "group": 2,
+    "page": 98,
+    "source": "IMG_0229.HEIC",
+    "row": 1
+  },
+  {
+    "id": "v2-2-hot",
+    "english": "hot",
+    "japanese": "暑い",
+    "group": 2,
+    "page": 98,
+    "source": "IMG_0229.HEIC",
+    "row": 2
+  },
+  {
+    "id": "v2-2-barley-tea",
+    "english": "barley tea",
+    "japanese": "麦茶",
+    "group": 2,
+    "page": 98,
+    "source": "IMG_0229.HEIC",
+    "row": 3
+  },
+  {
+    "id": "v2-2-rule",
+    "english": "rule",
+    "japanese": "規則、ルール",
+    "group": 2,
+    "page": 99,
+    "source": "IMG_0229.HEIC",
+    "row": 4
+  },
+  {
+    "id": "v2-2-well",
+    "english": "well",
+    "japanese": "よく、満足に",
+    "group": 2,
+    "page": 99,
+    "source": "IMG_0229.HEIC",
+    "row": 5
+  },
+  {
+    "id": "v2-2-belong-to",
+    "english": "belong to",
+    "japanese": "～に属する",
+    "group": 2,
+    "page": 99,
+    "source": "IMG_0229.HEIC",
+    "row": 6
+  },
+  {
+    "id": "v2-2-idea",
+    "english": "idea",
+    "japanese": "思いつき、アイデア",
+    "group": 2,
+    "page": 99,
+    "source": "IMG_0229.HEIC",
+    "row": 7
+  },
+  {
+    "id": "v2-2-wrong",
+    "english": "wrong",
+    "japanese": "間違った、誤った",
+    "group": 2,
+    "page": 99,
+    "source": "IMG_0229.HEIC",
+    "row": 8
+  },
+  {
+    "id": "v2-2-number",
+    "english": "number",
+    "japanese": "番号、電話番号",
+    "group": 2,
+    "page": 99,
+    "source": "IMG_0229.HEIC",
+    "row": 9
+  },
+  {
+    "id": "v2-2-report",
+    "english": "report",
+    "japanese": "レポート、報告書",
+    "group": 2,
+    "page": 100,
+    "source": "IMG_0229.HEIC",
+    "row": 10
+  },
+  {
+    "id": "v2-2-clown",
+    "english": "clown",
+    "japanese": "道化、ピエロ",
+    "group": 2,
+    "page": 100,
+    "source": "IMG_0229.HEIC",
+    "row": 11
+  },
+  {
+    "id": "v2-2-circus",
+    "english": "circus",
+    "japanese": "サーカス",
+    "group": 2,
+    "page": 100,
+    "source": "IMG_0229.HEIC",
+    "row": 12
+  },
+  {
+    "id": "v2-2-volunteer",
+    "english": "volunteer",
+    "japanese": "ボランティア",
+    "group": 2,
+    "page": 100,
+    "source": "IMG_0229.HEIC",
+    "row": 13
+  },
+  {
+    "id": "v2-2-other",
+    "english": "other",
+    "japanese": "他の",
+    "group": 2,
+    "page": 100,
+    "source": "IMG_0229.HEIC",
+    "row": 14
+  },
+  {
+    "id": "v2-2-difference",
+    "english": "difference",
+    "japanese": "違い、相違点",
+    "group": 2,
+    "page": 100,
+    "source": "IMG_0229.HEIC",
+    "row": 15
+  },
+  {
+    "id": "v2-2-bring",
+    "english": "bring",
+    "japanese": "～をもたらす、持ってくる",
+    "group": 2,
+    "page": 100,
+    "source": "IMG_0230.HEIC",
+    "row": 1
+  },
+  {
+    "id": "v2-2-fun",
+    "english": "fun",
+    "japanese": "楽しみ、楽しいこと",
+    "group": 2,
+    "page": 100,
+    "source": "IMG_0230.HEIC",
+    "row": 2
+  },
+  {
+    "id": "v2-2-sick",
+    "english": "sick",
+    "japanese": "病気の",
+    "group": 2,
+    "page": 101,
+    "source": "IMG_0230.HEIC",
+    "row": 3
+  },
+  {
+    "id": "v2-2-be-in-the-hospital",
+    "english": "be in the hospital",
+    "japanese": "入院している",
+    "group": 2,
+    "page": 101,
+    "source": "IMG_0230.HEIC",
+    "row": 4
+  },
+  {
+    "id": "v2-2-away",
+    "english": "away",
+    "japanese": "離れて",
+    "group": 2,
+    "page": 101,
+    "source": "IMG_0230.HEIC",
+    "row": 5
+  },
+  {
+    "id": "v2-2-lonely",
+    "english": "lonely",
+    "japanese": "さびしい",
+    "group": 2,
+    "page": 101,
+    "source": "IMG_0230.HEIC",
+    "row": 6
+  },
+  {
+    "id": "v2-2-worry-about",
+    "english": "worry about",
+    "japanese": "～を心配する",
+    "group": 2,
+    "page": 101,
+    "source": "IMG_0230.HEIC",
+    "row": 7
+  },
+  {
+    "id": "v2-2-around",
+    "english": "around",
+    "japanese": "～の周りを、～のあちこちを",
+    "group": 2,
+    "page": 101,
+    "source": "IMG_0230.HEIC",
+    "row": 8
+  },
+  {
+    "id": "v2-2-world",
+    "english": "world",
+    "japanese": "世界",
+    "group": 2,
+    "page": 101,
+    "source": "IMG_0230.HEIC",
+    "row": 9
+  },
+  {
+    "id": "v2-2-laughter",
+    "english": "laughter",
+    "japanese": "笑い",
+    "group": 2,
+    "page": 101,
+    "source": "IMG_0230.HEIC",
+    "row": 10
+  },
+  {
+    "id": "v2-2-bedroom",
+    "english": "bedroom",
+    "japanese": "寝室",
+    "group": 2,
+    "page": 103,
+    "source": "IMG_0230.HEIC",
+    "row": 11
+  },
+  {
+    "id": "v2-2-bathroom",
+    "english": "bathroom",
+    "japanese": "浴室",
+    "group": 2,
+    "page": 103,
+    "source": "IMG_0230.HEIC",
+    "row": 12
+  },
+  {
+    "id": "v2-2-dining-room",
+    "english": "dining room",
+    "japanese": "食堂",
+    "group": 2,
+    "page": 103,
+    "source": "IMG_0230.HEIC",
+    "row": 13
+  },
+  {
+    "id": "v2-2-brush",
+    "english": "brush",
+    "japanese": "～をブラシで磨く",
+    "group": 2,
+    "page": 103,
+    "source": "IMG_0230.HEIC",
+    "row": 14
+  },
+  {
+    "id": "v2-2-tooth",
+    "english": "tooth",
+    "japanese": "歯（複数形：teeth）",
+    "group": 2,
+    "page": 103,
+    "source": "IMG_0230.HEIC",
+    "row": 15
+  },
+  {
+    "id": "v2-2-water",
+    "english": "water",
+    "japanese": "～に水をやる",
+    "group": 2,
+    "page": 103,
+    "source": "IMG_0231.HEIC",
+    "row": 1
+  },
+  {
+    "id": "v2-2-plant",
+    "english": "plant",
+    "japanese": "植物",
+    "group": 2,
+    "page": 103,
+    "source": "IMG_0231.HEIC",
+    "row": 2
+  },
+  {
+    "id": "v2-2-front",
+    "english": "front",
+    "japanese": "前、正面",
+    "group": 2,
+    "page": 105,
+    "source": "IMG_0231.HEIC",
+    "row": 3
+  },
+  {
+    "id": "v2-2-in-front-of",
+    "english": "in front of",
+    "japanese": "～の正面に",
+    "group": 2,
+    "page": 105,
+    "source": "IMG_0231.HEIC",
+    "row": 4
+  },
+  {
+    "id": "v2-2-class",
+    "english": "class",
+    "japanese": "クラスの生徒たち、学級",
+    "group": 2,
+    "page": 105,
+    "source": "IMG_0231.HEIC",
+    "row": 5
+  },
+  {
+    "id": "v2-2-chinese",
+    "english": "Chinese",
+    "japanese": "中国語、中国人",
+    "group": 2,
+    "page": 105,
+    "source": "IMG_0231.HEIC",
+    "row": 6
+  },
+  {
+    "id": "v2-2-arrive",
+    "english": "arrive",
+    "japanese": "到着する、着く",
+    "group": 2,
+    "page": 106,
+    "source": "IMG_0231.HEIC",
+    "row": 7
+  },
+  {
+    "id": "v2-2-early",
+    "english": "early",
+    "japanese": "早く",
+    "group": 2,
+    "page": 106,
+    "source": "IMG_0231.HEIC",
+    "row": 8
+  },
+  {
+    "id": "v2-2-mrs.",
+    "english": "Mrs.",
+    "japanese": "〈既婚女性の姓の前で〉～さん、先生",
+    "group": 2,
+    "page": 106,
+    "source": "IMG_0231.HEIC",
+    "row": 9
+  },
+  {
+    "id": "v2-2-south",
+    "english": "south",
+    "japanese": "南、南部、南方",
+    "group": 2,
+    "page": 106,
+    "source": "IMG_0231.HEIC",
+    "row": 10
+  },
+  {
+    "id": "v2-3-culture",
+    "english": "culture",
+    "japanese": "文化",
+    "group": 3,
+    "page": 106,
+    "source": "IMG_0234.HEIC",
+    "row": 1
+  },
+  {
+    "id": "v2-3-country",
+    "english": "country",
+    "japanese": "国",
+    "group": 3,
+    "page": 106,
+    "source": "IMG_0234.HEIC",
+    "row": 2
+  },
+  {
+    "id": "v2-3-ask",
+    "english": "ask",
+    "japanese": "たずねる",
+    "group": 3,
+    "page": 106,
+    "source": "IMG_0234.HEIC",
+    "row": 3
+  },
+  {
+    "id": "v2-3-answer",
+    "english": "answer",
+    "japanese": "答える",
+    "group": 3,
+    "page": 106,
+    "source": "IMG_0234.HEIC",
+    "row": 4
+  },
+  {
+    "id": "v2-3-last",
+    "english": "last",
+    "japanese": "この前の、先～",
+    "group": 3,
+    "page": 107,
+    "source": "IMG_0234.HEIC",
+    "row": 5
+  },
+  {
+    "id": "v2-3-call",
+    "english": "call",
+    "japanese": "～に電話する",
+    "group": 3,
+    "page": 107,
+    "source": "IMG_0234.HEIC",
+    "row": 6
+  },
+  {
+    "id": "v2-3-ago",
+    "english": "ago",
+    "japanese": "～前に",
+    "group": 3,
+    "page": 107,
+    "source": "IMG_0234.HEIC",
+    "row": 7
+  },
+  {
+    "id": "v2-3-exam",
+    "english": "exam",
+    "japanese": "試験",
+    "group": 3,
+    "page": 107,
+    "source": "IMG_0234.HEIC",
+    "row": 8
+  },
+  {
+    "id": "v2-3-yesterday",
+    "english": "yesterday",
+    "japanese": "昨日",
+    "group": 3,
+    "page": 107,
+    "source": "IMG_0234.HEIC",
+    "row": 9
+  },
+  {
+    "id": "v2-3-drop",
+    "english": "drop",
+    "japanese": "落ちる、～を落とす",
+    "group": 3,
+    "page": 107,
+    "source": "IMG_0234.HEIC",
+    "row": 10
+  },
+  {
+    "id": "v2-3-way",
+    "english": "way",
+    "japanese": "道筋、道",
+    "group": 3,
+    "page": 107,
+    "source": "IMG_0234.HEIC",
+    "row": 11
+  },
+  {
+    "id": "v2-3-on-one's-way",
+    "english": "on one's way",
+    "japanese": "途中で",
+    "group": 3,
+    "page": 107,
+    "source": "IMG_0234.HEIC",
+    "row": 12
+  },
+  {
+    "id": "v2-3-help",
+    "english": "help",
+    "japanese": "～を手伝う",
+    "group": 3,
+    "page": 107,
+    "source": "IMG_0234.HEIC",
+    "row": 13
+  },
+  {
+    "id": "v2-3-carry",
+    "english": "carry",
+    "japanese": "～を運ぶ",
+    "group": 3,
+    "page": 107,
+    "source": "IMG_0234.HEIC",
+    "row": 14
+  },
+  {
+    "id": "v2-3-stop",
+    "english": "stop",
+    "japanese": "止まる、～を止める",
+    "group": 3,
+    "page": 107,
+    "source": "IMG_0234.HEIC",
+    "row": 15
+  },
+  {
+    "id": "v2-3-plan",
+    "english": "plan",
+    "japanese": "～を計画する",
+    "group": 3,
+    "page": 107,
+    "source": "IMG_0235.HEIC",
+    "row": 1
+  },
+  {
+    "id": "v2-3-the-day-before-yesterday",
+    "english": "the day before yesterday",
+    "japanese": "おととい",
+    "group": 3,
+    "page": 107,
+    "source": "IMG_0235.HEIC",
+    "row": 2
+  },
+  {
+    "id": "v2-3-month",
+    "english": "month",
+    "japanese": "1ヵ月、月",
+    "group": 3,
+    "page": 107,
+    "source": "IMG_0235.HEIC",
+    "row": 3
+  },
+  {
+    "id": "v2-3-year",
+    "english": "year",
+    "japanese": "年",
+    "group": 3,
+    "page": 107,
+    "source": "IMG_0235.HEIC",
+    "row": 4
+  },
+  {
+    "id": "v2-3-did",
+    "english": "did",
+    "japanese": "do の過去形",
+    "group": 3,
+    "page": 108,
+    "source": "IMG_0235.HEIC",
+    "row": 5
+  },
+  {
+    "id": "v2-3-anime",
+    "english": "anime",
+    "japanese": "アニメ",
+    "group": 3,
+    "page": 108,
+    "source": "IMG_0235.HEIC",
+    "row": 6
+  },
+  {
+    "id": "v2-3-sound",
+    "english": "sound",
+    "japanese": "～に聞こえる",
+    "group": 3,
+    "page": 108,
+    "source": "IMG_0235.HEIC",
+    "row": 7
+  },
+  {
+    "id": "v2-3-sounds-nice.",
+    "english": "Sounds nice.",
+    "japanese": "それはいいね",
+    "group": 3,
+    "page": 108,
+    "source": "IMG_0235.HEIC",
+    "row": 8
+  },
+  {
+    "id": "v2-3-move",
+    "english": "move",
+    "japanese": "～を動かす、移動させる",
+    "group": 3,
+    "page": 108,
+    "source": "IMG_0235.HEIC",
+    "row": 9
+  },
+  {
+    "id": "v2-3-pc",
+    "english": "PC",
+    "japanese": "〈Personal Computer の略〉パソコン",
+    "group": 3,
+    "page": 108,
+    "source": "IMG_0235.HEIC",
+    "row": 10
+  },
+  {
+    "id": "v2-3-setting",
+    "english": "setting",
+    "japanese": "設定",
+    "group": 3,
+    "page": 108,
+    "source": "IMG_0235.HEIC",
+    "row": 11
+  },
+  {
+    "id": "v2-3-smartphone",
+    "english": "smartphone",
+    "japanese": "スマートフォン",
+    "group": 3,
+    "page": 109,
+    "source": "IMG_0235.HEIC",
+    "row": 12
+  },
+  {
+    "id": "v2-3-work",
+    "english": "work",
+    "japanese": "機能する",
+    "group": 3,
+    "page": 109,
+    "source": "IMG_0235.HEIC",
+    "row": 13
+  },
+  {
+    "id": "v2-3-call-back-~",
+    "english": "call back ~",
+    "japanese": "～に電話をかけ直す",
+    "group": 3,
+    "page": 109,
+    "source": "IMG_0235.HEIC",
+    "row": 14
+  },
+  {
+    "id": "v2-3-travel",
+    "english": "travel",
+    "japanese": "旅行する",
+    "group": 3,
+    "page": 109,
+    "source": "IMG_0235.HEIC",
+    "row": 15
+  },
+  {
+    "id": "v2-3-first",
+    "english": "first",
+    "japanese": "まず第一に",
+    "group": 3,
+    "page": 110,
+    "source": "IMG_0236.HEIC",
+    "row": 1
+  },
+  {
+    "id": "v2-3-however",
+    "english": "however",
+    "japanese": "しかしながら、けれども",
+    "group": 3,
+    "page": 110,
+    "source": "IMG_0236.HEIC",
+    "row": 2
+  },
+  {
+    "id": "v2-3-say",
+    "english": "say",
+    "japanese": "～と言う",
+    "group": 3,
+    "page": 110,
+    "source": "IMG_0236.HEIC",
+    "row": 3
+  },
+  {
+    "id": "v2-3-took",
+    "english": "took",
+    "japanese": "take の過去形",
+    "group": 3,
+    "page": 110,
+    "source": "IMG_0236.HEIC",
+    "row": 4
+  },
+  {
+    "id": "v2-3-take-out",
+    "english": "take out",
+    "japanese": "～を取り出す",
+    "group": 3,
+    "page": 110,
+    "source": "IMG_0236.HEIC",
+    "row": 5
+  },
+  {
+    "id": "v2-3-sweet",
+    "english": "sweet",
+    "japanese": "〈sweets で〉お菓子、キャンディー",
+    "group": 3,
+    "page": 110,
+    "source": "IMG_0236.HEIC",
+    "row": 6
+  },
+  {
+    "id": "v2-3-ate",
+    "english": "ate",
+    "japanese": "eat の過去形",
+    "group": 3,
+    "page": 110,
+    "source": "IMG_0236.HEIC",
+    "row": 7
+  },
+  {
+    "id": "v2-3-finally",
+    "english": "finally",
+    "japanese": "最後に",
+    "group": 3,
+    "page": 110,
+    "source": "IMG_0236.HEIC",
+    "row": 8
+  },
+  {
+    "id": "v2-3-knew",
+    "english": "knew",
+    "japanese": "know の過去形",
+    "group": 3,
+    "page": 110,
+    "source": "IMG_0236.HEIC",
+    "row": 9
+  },
+  {
+    "id": "v2-3-went",
+    "english": "went",
+    "japanese": "go の過去形",
+    "group": 3,
+    "page": 111,
+    "source": "IMG_0236.HEIC",
+    "row": 10
+  },
+  {
+    "id": "v2-4-left",
+    "english": "left",
+    "japanese": "leave の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0239.HEIC",
+    "row": 1
+  },
+  {
+    "id": "v2-4-leave",
+    "english": "leave",
+    "japanese": "～を出発する、去る",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0239.HEIC",
+    "row": 2
+  },
+  {
+    "id": "v2-4-hotel",
+    "english": "hotel",
+    "japanese": "ホテル、旅館",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0239.HEIC",
+    "row": 3
+  },
+  {
+    "id": "v2-4-for",
+    "english": "for",
+    "japanese": "～に向かって",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0239.HEIC",
+    "row": 4
+  },
+  {
+    "id": "v2-4-airport",
+    "english": "airport",
+    "japanese": "空港",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0239.HEIC",
+    "row": 5
+  },
+  {
+    "id": "v2-4-saw",
+    "english": "saw",
+    "japanese": "see の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0239.HEIC",
+    "row": 6
+  },
+  {
+    "id": "v2-4-actor",
+    "english": "actor",
+    "japanese": "俳優",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0239.HEIC",
+    "row": 7
+  },
+  {
+    "id": "v2-4-plane",
+    "english": "plane",
+    "japanese": "飛行機",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0239.HEIC",
+    "row": 8
+  },
+  {
+    "id": "v2-4-begin",
+    "english": "begin",
+    "japanese": "始まる、～を始める",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0239.HEIC",
+    "row": 9
+  },
+  {
+    "id": "v2-4-began",
+    "english": "began",
+    "japanese": "begin の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0239.HEIC",
+    "row": 10
+  },
+  {
+    "id": "v2-4-brought",
+    "english": "brought",
+    "japanese": "bring の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0239.HEIC",
+    "row": 11
+  },
+  {
+    "id": "v2-4-bought",
+    "english": "bought",
+    "japanese": "buy の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0239.HEIC",
+    "row": 12
+  },
+  {
+    "id": "v2-4-came",
+    "english": "came",
+    "japanese": "come の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0239.HEIC",
+    "row": 13
+  },
+  {
+    "id": "v2-4-forget",
+    "english": "forget",
+    "japanese": "～を忘れる",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0239.HEIC",
+    "row": 14
+  },
+  {
+    "id": "v2-4-forgot",
+    "english": "forgot",
+    "japanese": "forget の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0239.HEIC",
+    "row": 15
+  },
+  {
+    "id": "v2-4-got",
+    "english": "got",
+    "japanese": "get の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0240.HEIC",
+    "row": 1
+  },
+  {
+    "id": "v2-4-gave",
+    "english": "gave",
+    "japanese": "give の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0240.HEIC",
+    "row": 2
+  },
+  {
+    "id": "v2-4-had",
+    "english": "had",
+    "japanese": "have の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0240.HEIC",
+    "row": 3
+  },
+  {
+    "id": "v2-4-hear",
+    "english": "hear",
+    "japanese": "～が聞こえる",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0240.HEIC",
+    "row": 4
+  },
+  {
+    "id": "v2-4-heard",
+    "english": "heard",
+    "japanese": "hear の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0240.HEIC",
+    "row": 5
+  },
+  {
+    "id": "v2-4-lose",
+    "english": "lose",
+    "japanese": "～を失う、なくす",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0240.HEIC",
+    "row": 6
+  },
+  {
+    "id": "v2-4-lost",
+    "english": "lost",
+    "japanese": "lose の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0240.HEIC",
+    "row": 7
+  },
+  {
+    "id": "v2-4-made",
+    "english": "made",
+    "japanese": "make の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0240.HEIC",
+    "row": 8
+  },
+  {
+    "id": "v2-4-met",
+    "english": "met",
+    "japanese": "meet の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0240.HEIC",
+    "row": 9
+  },
+  {
+    "id": "v2-4-put",
+    "english": "put",
+    "japanese": "put の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0240.HEIC",
+    "row": 10
+  },
+  {
+    "id": "v2-4-read",
+    "english": "read",
+    "japanese": "read の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0240.HEIC",
+    "row": 11
+  },
+  {
+    "id": "v2-4-ran",
+    "english": "ran",
+    "japanese": "run の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0240.HEIC",
+    "row": 12
+  },
+  {
+    "id": "v2-4-said",
+    "english": "said",
+    "japanese": "say の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0240.HEIC",
+    "row": 13
+  },
+  {
+    "id": "v2-4-sell",
+    "english": "sell",
+    "japanese": "～を売る",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0240.HEIC",
+    "row": 14
+  },
+  {
+    "id": "v2-4-sold",
+    "english": "sold",
+    "japanese": "sell の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0240.HEIC",
+    "row": 15
+  },
+  {
+    "id": "v2-4-sent",
+    "english": "sent",
+    "japanese": "send の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0241.HEIC",
+    "row": 1
+  },
+  {
+    "id": "v2-4-sang",
+    "english": "sang",
+    "japanese": "sing の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0241.HEIC",
+    "row": 2
+  },
+  {
+    "id": "v2-4-spoke",
+    "english": "spoke",
+    "japanese": "speak の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0241.HEIC",
+    "row": 3
+  },
+  {
+    "id": "v2-4-swam",
+    "english": "swam",
+    "japanese": "swim の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0241.HEIC",
+    "row": 4
+  },
+  {
+    "id": "v2-4-taught",
+    "english": "taught",
+    "japanese": "teach の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0241.HEIC",
+    "row": 5
+  },
+  {
+    "id": "v2-4-tell",
+    "english": "tell",
+    "japanese": "～に告げる、伝える",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0241.HEIC",
+    "row": 6
+  },
+  {
+    "id": "v2-4-told",
+    "english": "told",
+    "japanese": "tell の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0241.HEIC",
+    "row": 7
+  },
+  {
+    "id": "v2-4-wrote",
+    "english": "wrote",
+    "japanese": "write の過去形",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0241.HEIC",
+    "row": 8
+  },
+  {
+    "id": "v2-4-comic",
+    "english": "comic",
+    "japanese": "マンガの",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0241.HEIC",
+    "row": 9
+  },
+  {
+    "id": "v2-4-coffee",
+    "english": "coffee",
+    "japanese": "コーヒー",
+    "group": 4,
+    "page": 111,
+    "source": "IMG_0241.HEIC",
+    "row": 10
+  },
+  {
+    "id": "v2-5-drank",
+    "english": "drank",
+    "japanese": "drink の過去形",
+    "group": 5,
+    "page": 111,
+    "source": "IMG_0244.HEIC",
+    "row": 1
+  },
+  {
+    "id": "v2-5-english",
+    "english": "English",
+    "japanese": "イングランド（人）の",
+    "group": 5,
+    "page": 111,
+    "source": "IMG_0244.HEIC",
+    "row": 2
+  },
+  {
+    "id": "v2-5-denali",
+    "english": "Denali",
+    "japanese": "デナリ〈地名〉",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0244.HEIC",
+    "row": 3
+  },
+  {
+    "id": "v2-5-alaska",
+    "english": "Alaska",
+    "japanese": "アラスカ〈地名〉",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0244.HEIC",
+    "row": 4
+  },
+  {
+    "id": "v2-5-mckinley",
+    "english": "McKinley",
+    "japanese": "マッキンリー〈山の名〉",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0244.HEIC",
+    "row": 5
+  },
+  {
+    "id": "v2-5-anchorage",
+    "english": "Anchorage",
+    "japanese": "アンカレッジ〈地名〉",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0244.HEIC",
+    "row": 6
+  },
+  {
+    "id": "v2-5-journey",
+    "english": "journey",
+    "japanese": "旅行",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0244.HEIC",
+    "row": 7
+  },
+  {
+    "id": "v2-5-take",
+    "english": "take",
+    "japanese": "〈時間〉～がかかる",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0244.HEIC",
+    "row": 8
+  },
+  {
+    "id": "v2-5-half",
+    "english": "half",
+    "japanese": "半時間、半分",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0244.HEIC",
+    "row": 9
+  },
+  {
+    "id": "v2-5-hour",
+    "english": "hour",
+    "japanese": "1時間",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0244.HEIC",
+    "row": 10
+  },
+  {
+    "id": "v2-5-own",
+    "english": "own",
+    "japanese": "自分の、自分自身の",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0244.HEIC",
+    "row": 11
+  },
+  {
+    "id": "v2-5-public",
+    "english": "public",
+    "japanese": "公共の",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0244.HEIC",
+    "row": 12
+  },
+  {
+    "id": "v2-5-tour",
+    "english": "tour",
+    "japanese": "旅行、観光",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0244.HEIC",
+    "row": 13
+  },
+  {
+    "id": "v2-5-bear",
+    "english": "bear",
+    "japanese": "クマ",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0244.HEIC",
+    "row": 14
+  },
+  {
+    "id": "v2-5-brown-bear",
+    "english": "brown bear",
+    "japanese": "ヒグマ",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0244.HEIC",
+    "row": 15
+  },
+  {
+    "id": "v2-5-wolf",
+    "english": "wolf",
+    "japanese": "オオカミ（複数形：wolves）",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0245.HEIC",
+    "row": 1
+  },
+  {
+    "id": "v2-5-wild",
+    "english": "wild",
+    "japanese": "野生の",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0245.HEIC",
+    "row": 2
+  },
+  {
+    "id": "v2-5-safely",
+    "english": "safely",
+    "japanese": "安全に",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0245.HEIC",
+    "row": 3
+  },
+  {
+    "id": "v2-5-aurora",
+    "english": "aurora",
+    "japanese": "オーロラ",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0245.HEIC",
+    "row": 4
+  },
+  {
+    "id": "v2-5-during",
+    "english": "during",
+    "japanese": "～の間中（ずっと）",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0245.HEIC",
+    "row": 5
+  },
+  {
+    "id": "v2-5-trip",
+    "english": "trip",
+    "japanese": "旅行",
+    "group": 5,
+    "page": 112,
+    "source": "IMG_0245.HEIC",
+    "row": 6
+  },
+  {
+    "id": "v2-5-greeting",
+    "english": "greeting",
+    "japanese": "〈greetings で〉便り",
+    "group": 5,
+    "page": 113,
+    "source": "IMG_0245.HEIC",
+    "row": 7
+  },
+  {
+    "id": "v2-5-letter",
+    "english": "letter",
+    "japanese": "手紙",
+    "group": 5,
+    "page": 113,
+    "source": "IMG_0245.HEIC",
+    "row": 8
+  },
+  {
+    "id": "v2-5-camp",
+    "english": "camp",
+    "japanese": "キャンプをする",
+    "group": 5,
+    "page": 113,
+    "source": "IMG_0245.HEIC",
+    "row": 9
+  },
+  {
+    "id": "v2-5-close",
+    "english": "close",
+    "japanese": "接近して、ごく近くに",
+    "group": 5,
+    "page": 113,
+    "source": "IMG_0245.HEIC",
+    "row": 10
+  },
+  {
+    "id": "v2-5-pay",
+    "english": "pay",
+    "japanese": "～を払う、～を支払う",
+    "group": 5,
+    "page": 113,
+    "source": "IMG_0245.HEIC",
+    "row": 11
+  },
+  {
+    "id": "v2-5-attention",
+    "english": "attention",
+    "japanese": "注意、注目",
+    "group": 5,
+    "page": 113,
+    "source": "IMG_0245.HEIC",
+    "row": 12
+  },
+  {
+    "id": "v2-5-pay-attention-to",
+    "english": "pay attention to",
+    "japanese": "～に注意を払う",
+    "group": 5,
+    "page": 113,
+    "source": "IMG_0245.HEIC",
+    "row": 13
+  },
+  {
+    "id": "v2-5-appear",
+    "english": "appear",
+    "japanese": "現れる",
+    "group": 5,
+    "page": 113,
+    "source": "IMG_0245.HEIC",
+    "row": 14
+  },
+  {
+    "id": "v2-5-little",
+    "english": "little",
+    "japanese": "少しは",
+    "group": 5,
+    "page": 113,
+    "source": "IMG_0245.HEIC",
+    "row": 15
+  },
+  {
+    "id": "v2-5-sad",
+    "english": "sad",
+    "japanese": "悲しい",
+    "group": 5,
+    "page": 113,
+    "source": "IMG_0246.HEIC",
+    "row": 1
+  },
+  {
+    "id": "v2-5-enjoy",
+    "english": "enjoy",
+    "japanese": "～を楽しむ",
+    "group": 5,
+    "page": 113,
+    "source": "IMG_0246.HEIC",
+    "row": 2
+  },
+  {
+    "id": "v2-5-grandma",
+    "english": "grandma",
+    "japanese": "おばあちゃん",
+    "group": 5,
+    "page": 115,
+    "source": "IMG_0246.HEIC",
+    "row": 3
+  },
+  {
+    "id": "v2-5-attend",
+    "english": "attend",
+    "japanese": "～に出席する、参列する",
+    "group": 5,
+    "page": 115,
+    "source": "IMG_0246.HEIC",
+    "row": 4
+  },
+  {
+    "id": "v2-5-concert",
+    "english": "concert",
+    "japanese": "コンサート、演奏会",
+    "group": 5,
+    "page": 115,
+    "source": "IMG_0246.HEIC",
+    "row": 5
+  },
+  {
+    "id": "v2-5-tomorrow",
+    "english": "tomorrow",
+    "japanese": "明日",
+    "group": 5,
+    "page": 115,
+    "source": "IMG_0246.HEIC",
+    "row": 6
+  },
+  {
+    "id": "v2-5-game",
+    "english": "game",
+    "japanese": "ゲーム、試合",
+    "group": 5,
+    "page": 115,
+    "source": "IMG_0246.HEIC",
+    "row": 7
+  },
+  {
+    "id": "v2-5-bowl",
+    "english": "bowl",
+    "japanese": "ボウリングをする",
+    "group": 5,
+    "page": 115,
+    "source": "IMG_0246.HEIC",
+    "row": 8
+  },
+  {
+    "id": "v2-5-cycle",
+    "english": "cycle",
+    "japanese": "自転車に乗る",
+    "group": 5,
+    "page": 115,
+    "source": "IMG_0246.HEIC",
+    "row": 9
+  },
+  {
+    "id": "v2-5-amusement-park",
+    "english": "amusement park",
+    "japanese": "遊園地",
+    "group": 5,
+    "page": 115,
+    "source": "IMG_0246.HEIC",
+    "row": 10
+  }
+]

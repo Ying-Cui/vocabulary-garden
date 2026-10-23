@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react'
-import { WORDS } from './data.js'
+import { WORDS, STORAGE_KEY } from './data.js'
+import { acceptsAnswer, createOptions } from './study.js'
 
-const STORAGE_KEY = 'kotoba-garden-v1'
 const BATCH_SIZE = 20
 
 const icons = {
@@ -32,12 +32,9 @@ function shuffle(items) {
   return copy
 }
 
-function normalize(value) {
-  return value.trim().toLocaleLowerCase().replace(/[?.!]/g, '').replace(/\s+/g, ' ')
-}
 
 function Header() {
-  return <header className="header"><div className="brand"><Icon name="leaf" size={31}/><span>ことばの庭</span></div><div className="header-note">全 {WORDS.length} 語</div></header>
+  return <header className="header"><div className="brand"><Icon name="leaf" size={31}/><span>ことばの庭</span></div><div className="header-note">v2 · {WORDS.length}語・句</div></header>
 }
 
 function Nav({ screen, onChange }) {
@@ -51,6 +48,7 @@ function ProgressBar({ value, max }) {
 
 function App() {
   const [screen, setScreen] = useState('home')
+  const [session, setSession] = useState(0)
   const [progress, setProgress] = useState(loadProgress)
   const [batch, setBatch] = useState(() => shuffle(WORDS).slice(0, BATCH_SIZE))
 
@@ -70,13 +68,14 @@ function App() {
   const start = (target, weakOnly=false) => {
     const pool = weakOnly && weakWords.length ? weakWords : WORDS
     setBatch(shuffle(pool).slice(0, Math.min(BATCH_SIZE, pool.length)))
+    setSession(value => value + 1)
     setScreen(target)
   }
 
   const content = screen === 'home' ? <Home {...{studied, mastered, weakWords, start, setScreen}} />
-    : screen === 'card' ? <Cards words={batch} saveResult={saveResult} restart={()=>start('card')} />
-    : screen === 'quiz' ? <Quiz words={batch} saveResult={saveResult} restart={()=>start('quiz')} />
-    : screen === 'write' ? <Typing words={batch} saveResult={saveResult} restart={()=>start('write')} />
+    : screen === 'card' ? <Cards key={session} words={batch} saveResult={saveResult} restart={()=>start('card')} />
+    : screen === 'quiz' ? <Quiz key={session} words={batch} saveResult={saveResult} restart={()=>start('quiz')} />
+    : screen === 'write' ? <Typing key={session} words={batch} saveResult={saveResult} restart={()=>start('write')} />
     : <WordList progress={progress} />
 
   return <div className="app-shell"><Header/><main>{content}</main><Nav screen={screen} onChange={id=>id==='home'?setScreen('home'):start(id)}/></div>
@@ -86,7 +85,7 @@ function Home({ studied, mastered, weakWords, start, setScreen }) {
   const pct = Math.round(studied / WORDS.length * 100)
   return <section className="home-layout">
     <div className="welcome">
-      <h1>今日の20語</h1><p>毎回ランダムに選ばれた20語を、何回かに分けて学習できます。</p>
+      <h1>今日の20語</h1><p className="edition-note">v2 · p.93–115 · 新しい200語・句</p><p>毎回ランダムに選ばれた20語を、何回かに分けて学習できます。</p>
       <div className="home-actions">
         <button className="button primary" onClick={()=>start('card')}><Icon name="card"/>学習をはじめる<span>›</span></button>
         <button className="button secondary" onClick={()=>start('card',true)} disabled={!weakWords.length}><Icon name="refresh"/>苦手を復習<span>›</span></button>
@@ -94,7 +93,7 @@ function Home({ studied, mastered, weakWords, start, setScreen }) {
       </div>
       <div className="record"><div className="record-head"><div><h2>学習の記録</h2><span>登録単語の進み具合</span></div><strong>{studied} <small>/ {WORDS.length}語</small></strong></div><ProgressBar value={studied} max={WORDS.length}/><div className="record-stats"><span><i className="dot green"/>覚えた <b>{mastered}語</b></span><span><i className="dot coral"/>苦手 <b>{weakWords.length}語</b></span></div></div>
     </div>
-    <div className="home-preview"><div className="preview-title"><span>カードで学習</span><span>1 / 20</span></div><ProgressBar value={1} max={20}/><div className="demo-card"><span>表面</span><strong>mountain</strong><em/></div><p>カードをタップして意味を確認</p></div>
+    <div className="home-preview"><div className="preview-title"><span>カードで学習</span><span>1 / 20</span></div><ProgressBar value={1} max={20}/><div className="demo-card"><span>表面</span><strong>medicine</strong><em/></div><p>カードをタップして意味を確認</p></div>
   </section>
 }
 
@@ -119,7 +118,7 @@ function Cards({ words, saveResult, restart }) {
 function Quiz({ words, saveResult, restart }) {
   const [index,setIndex]=useState(0),[score,setScore]=useState(0),[selected,setSelected]=useState(null)
   const word=words[index]
-  const options=useMemo(()=>shuffle([word,...shuffle(WORDS.filter(w=>w.id!==word.id)).slice(0,3)]),[word])
+  const options=useMemo(()=>word ? createOptions(word, WORDS) : [],[word])
   const choose = option => { if(selected) return; setSelected(option.id); const ok=option.id===word.id; if(ok)setScore(score+1); saveResult(word,ok) }
   const next=()=>{if(index===words.length-1)setIndex(words.length);else{setIndex(index+1);setSelected(null)}}
   if(index===words.length)return <Complete title={`${score} / ${words.length} 問正解`} count={words.length} restart={restart}/>
@@ -129,7 +128,7 @@ function Quiz({ words, saveResult, restart }) {
 function Typing({ words, saveResult, restart }) {
   const [index,setIndex]=useState(0),[value,setValue]=useState(''),[result,setResult]=useState(null),[score,setScore]=useState(0)
   const word=words[index]
-  const check=e=>{e.preventDefault();if(result)return;const ok=normalize(value)===normalize(word.english);setResult(ok);if(ok)setScore(score+1);saveResult(word,ok)}
+  const check=e=>{e.preventDefault();if(result!==null)return;const ok=acceptsAnswer(value,word,WORDS);setResult(ok);if(ok)setScore(score+1);saveResult(word,ok)}
   const next=()=>{if(index===words.length-1)setIndex(words.length);else{setIndex(index+1);setValue('');setResult(null)}}
   if(index===words.length)return <Complete title={`${score} / ${words.length} 問正解`} count={words.length} restart={restart}/>
   return <section className="study typing"><StudyHeader title="入力テスト" index={index} total={words.length}/><form className="typing-card" onSubmit={check}><span>英語で入力してください</span><strong>{word.japanese}</strong><input autoFocus autoComplete="off" spellCheck="false" value={value} onChange={e=>setValue(e.target.value)} placeholder="答えを入力" aria-label="英単語の答え"/><button className="button primary" type="submit" disabled={!value.trim()||result!==null}>答え合わせ</button>{result!==null&&<div className={`feedback ${result?'ok':'ng'}`}><b>{result?'正解！':'もう一度覚えよう'}</b>{!result&&<span>正解：{word.english}</span>}<button type="button" className="button primary" onClick={next}>{index===words.length-1?'結果を見る':'次の問題'}</button></div>}</form></section>
@@ -138,7 +137,7 @@ function Typing({ words, saveResult, restart }) {
 function WordList({ progress }) {
   const [query,setQuery]=useState('')
   const shown=useMemo(()=>WORDS.filter(w=>(w.english+' '+w.japanese).toLocaleLowerCase().includes(query.toLocaleLowerCase())),[query])
-  return <section className="word-list"><div className="list-head"><div><h1>単語一覧</h1><p>重複を除いた {WORDS.length} 語</p></div><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="英語・日本語で検索"/></div><div className="rows">{shown.map(w=><div className="word-row" key={w.id}><button onClick={()=>speak(w.english)}><Icon name="sound" size={20}/></button><div><strong>{w.english}</strong><span>{w.japanese}</span></div>{progress[w.id]?.wrong>0&&<em>復習</em>}</div>)}</div></section>
+  return <section className="word-list"><div className="list-head"><div><h1>単語一覧</h1><p>p.93–115 · {WORDS.length}語・句（同じ綴りの別の意味も収録）</p></div><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="英語・日本語で検索"/></div><div className="rows">{shown.map(w=><div className="word-row" key={w.id}><button onClick={()=>speak(w.english)}><Icon name="sound" size={20}/></button><div><strong>{w.english}</strong><span>{w.japanese}</span></div>{progress[w.id]?.wrong>0&&<em>復習</em>}</div>)}</div></section>
 }
 
 function Complete({ title, count, restart }) {

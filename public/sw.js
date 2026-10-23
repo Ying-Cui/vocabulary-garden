@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kotoba-garden-v2';
+const CACHE_NAME = 'kotoba-garden-v2-p93-115-1';
 const APP_ROOT = new URL('./', self.registration.scope);
 const INDEX_URL = new URL('./index.html', APP_ROOT);
 const CORE_URLS = [
