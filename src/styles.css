@@ -10,6 +10,21 @@ main{overflow:auto}
 .edition-note { color: #426956; font-size: .85rem; font-weight: 600; }
 
 select { font: inherit; color: inherit; }
+.quiz-direction { display: grid; grid-template-columns: auto minmax(140px, 220px); align-items: center; justify-content: start; gap: 8px 14px; margin-top: 18px; }
+.quiz-direction label { font-size: 14px; font-weight: 700; }
+.quiz-direction select { min-height: 44px; padding: 8px 28px 8px 12px; border: 1px solid #bcc3c9; border-radius: 10px; background: #fff; width: 100%; }
+.quiz-direction small { grid-column: 1 / -1; font-size: 12px; line-height: 1.6; color: #536273; }
+.quiz .question { padding: 34px 30px 28px; }
+.quiz .question > strong { display: block; overflow-wrap: anywhere; padding: 0 24px; }
+.quiz .question .sound { top: 18px; right: 0; }
+.quiz-reverse .question > strong { font-family: inherit; font-size: clamp(23px, 3vw, 32px); line-height: 1.5; }
+.options button:disabled { cursor: default; color: inherit; }
+.options button b { font-weight: inherit; overflow-wrap: anywhere; min-width: 0; }
+.quiz-reverse .options button b { font-family: Georgia, serif; font-size: 20px; }
+.quiz-feedback { margin: 16px 0 0; font-size: 14px; line-height: 1.6; }
+.quiz-feedback.ok { color: var(--green-dark); }
+.quiz-feedback.ng { color: #a93c2d; }
+.quiz .next { flex-shrink: 0; margin-top: 12px; }
 .home-layout { grid-template-columns: 420px minmax(0, 1fr); }
 .welcome { overflow-y: auto; min-height: 0; }
 .scope-picker { margin: 18px 0 20px; }

@@ -20,10 +20,13 @@ function shuffle(items, random) {
 
 export function createOptions(word, vocabulary, random = Math.random) {
   const meanings = new Set([word.japanese])
+  const spellings = new Set([normalizeAnswer(word.english)])
   const alternatives = shuffle(vocabulary, random).filter(candidate => {
-    if (normalizeAnswer(candidate.english) === normalizeAnswer(word.english) ||
+    const spelling = normalizeAnswer(candidate.english)
+    if (spellings.has(spelling) ||
         meanings.has(candidate.japanese)) return false
     meanings.add(candidate.japanese)
+    spellings.add(spelling)
     return true
   }).slice(0, 3)
   return shuffle([word, ...alternatives], random)

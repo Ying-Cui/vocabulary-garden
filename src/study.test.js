@@ -26,8 +26,19 @@ test('every quiz has four distinct meanings and excludes alternate senses of its
       assert.equal(options.length, 4)
       assert.equal(options.filter(w => w.id === word.id).length, 1)
       assert.equal(new Set(options.map(w => w.japanese)).size, 4)
+      assert.equal(new Set(options.map(w => normalizeAnswer(w.english))).size, 4)
       assert.equal(options.filter(w => normalizeAnswer(w.english) === normalizeAnswer(word.english)).length, 1)
     }
+  }
+})
+
+test('Japanese-to-English choices never offer both synonyms or duplicate English senses', () => {
+  const journey = words.find(word => word.english === 'journey')
+  const options = createOptions(journey, words, () => 0.5)
+  assert.equal(options.filter(word => word.japanese === '旅行').length, 1)
+  assert.equal(options.some(word => word.english === 'trip'), false)
+  for (const take of words.filter(word => word.english === 'take')) {
+    assert.equal(createOptions(take, words).filter(word => word.english === 'take').length, 1)
   }
 })
 

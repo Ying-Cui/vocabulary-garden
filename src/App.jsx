@@ -7,6 +7,7 @@ import { photoSets, scopeWords } from './scopes.js'
 const BATCH_SIZE = 20
 const PHOTO_SETS = photoSets(WORDS)
 const SCOPE_KEY = `${STORAGE_KEY}-scope`
+const DIRECTION_KEY = `${STORAGE_KEY}-quiz-direction`
 const STATUS_LABELS = { mastered: '覚えた', weak: '苦手', unseen: '未学習' }
 
 function loadScope() {
@@ -14,6 +15,11 @@ function loadScope() {
     const saved = localStorage.getItem(SCOPE_KEY)
     return PHOTO_SETS.some(photo => photo.id === saved) ? saved : 'all'
   } catch { return 'all' }
+}
+
+function loadQuizDirection() {
+  try { return localStorage.getItem(DIRECTION_KEY) === 'ja-en' ? 'ja-en' : 'en-ja' }
+  catch { return 'en-ja' }
 }
 
 const icons = {
@@ -66,6 +72,7 @@ function App() {
   const [session, setSession] = useState(0)
   const [progress, setProgress] = useState(loadProgress)
   const [scope, setScope] = useState(loadScope)
+  const [quizDirection, setQuizDirection] = useState(loadQuizDirection)
   const [storageError, setStorageError] = useState(false)
   const [batch, setBatch] = useState([])
   const [sessionInfo, setSessionInfo] = useState({ weakOnly: false, label: '' })
@@ -74,9 +81,10 @@ function App() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(progress))
       localStorage.setItem(SCOPE_KEY, scope)
+      localStorage.setItem(DIRECTION_KEY, quizDirection)
       setStorageError(false)
     } catch { setStorageError(true) }
-  }, [progress, scope])
+  }, [progress, scope, quizDirection])
 
   const saveResult = useCallback((word, correct) => {
     setProgress(previous => recordAnswer(previous, word, correct))
@@ -96,6 +104,10 @@ function App() {
     setScreen(target)
   }
   const restart = () => start(screen, sessionInfo.weakOnly)
+  const changeQuizDirection = direction => {
+    setQuizDirection(direction)
+    start('quiz', sessionInfo.weakOnly)
+  }
   const restartLabel = sessionInfo.weakOnly ? '残っている苦手をもう一度' : scope === 'all' ? '別の20語でもう一度' : '同じ写真でもう一度'
   const studyProps = { words: batch, saveResult, restart, restartLabel, label: sessionInfo.label }
 
@@ -103,7 +115,7 @@ function App() {
     : screen === 'list' ? <WordList progress={progress} words={selectedWords} label={scopeLabel} />
     : !batch.length ? <section className="complete"><Icon name="check" size={48}/><h1>この範囲に苦手な単語はありません</h1><p>学ぶ範囲を選んで、次の学習へ進みましょう。</p><button className="button primary" onClick={()=>setScreen('home')}>ホームへ戻る</button></section>
     : screen === 'card' ? <Cards key={session} {...studyProps} />
-    : screen === 'quiz' ? <Quiz key={session} {...studyProps} />
+    : screen === 'quiz' ? <Quiz key={session} {...studyProps} direction={quizDirection} onDirectionChange={changeQuizDirection} />
     : <Typing key={session} {...studyProps} />
 
   return <div className="app-shell"><Header/><main>{storageError && <p className="storage-warning" role="alert">学習記録を端末に保存できません。ブラウザの保存設定をご確認ください。</p>}{content}</main><Nav screen={screen} onChange={id=>id==='home'?setScreen('home'):start(id)}/></div>
@@ -160,14 +172,37 @@ function Cards({ words, saveResult, restart, restartLabel, label }) {
   return <section className="study"><StudyHeader title="カードで学習" index={index} total={words.length} label={label}/><div className={`flashcard ${flipped?'flipped':''}`} role="button" tabIndex="0" onClick={()=>setFlipped(!flipped)} onKeyDown={e=>(e.key==='Enter'||e.key===' ')&&setFlipped(!flipped)} aria-label="カードをめくる"><span>{flipped?'意味':'表面'}</span><button className="sound" onClick={e=>{e.stopPropagation();speak(word.english)}} aria-label="発音を聞く"><Icon name="sound"/></button><strong>{flipped?word.japanese:word.english}</strong><em/><small>{flipped?'もう一度タップで英語へ':'タップして意味を見る'}</small></div><div className="answer-actions"><button className="button retry" onClick={()=>answer(false)}><Icon name="refresh"/>もう一度</button><button className="button primary" onClick={()=>answer(true)}><Icon name="check"/>覚えた</button></div></section>
 }
 
-function Quiz({ words, saveResult, restart, restartLabel, label }) {
+function Quiz({ words, saveResult, restart, restartLabel, label, direction, onDirectionChange }) {
   const [index,setIndex]=useState(0),[score,setScore]=useState(0),[selected,setSelected]=useState(null)
+  const answeredRef = useRef(false)
   const word=words[index]
+  const reverse = direction === 'ja-en'
+  const directionLabel = reverse ? '日本語 → 英語' : '英語 → 日本語'
   const options=useMemo(()=>word ? createOptions(word, WORDS) : [],[word])
-  const choose = option => { if(selected) return; setSelected(option.id); const ok=option.id===word.id; if(ok)setScore(score+1); saveResult(word,ok) }
-  const next=()=>{if(index===words.length-1)setIndex(words.length);else{setIndex(index+1);setSelected(null)}}
-  if(index===words.length)return <Complete title={`${score} / ${words.length} 問正解`} count={words.length} restart={restart} restartLabel={restartLabel}/>
-  return <section className="study quiz"><StudyHeader title="4択クイズ" index={index} total={words.length} label={label}/><div className="question"><span>この英単語の意味は？</span><strong>{word.english}</strong><button className="sound" onClick={()=>speak(word.english)}><Icon name="sound"/></button></div><div className="options">{options.map((o,i)=><button key={o.id} onClick={()=>choose(o)} className={selected?(o.id===word.id?'correct':o.id===selected?'wrong':'dim'):''}><span>{String.fromCharCode(65+i)}</span>{o.japanese}</button>)}</div>{selected&&<button className="button primary next" onClick={next}>{index===words.length-1?'結果を見る':'次の問題'}</button>}</section>
+  const choose = option => { if(answeredRef.current) return; answeredRef.current=true; setSelected(option.id); const ok=option.id===word.id; if(ok)setScore(previous=>previous+1); saveResult(word,ok) }
+  const next=()=>{if(index===words.length-1)setIndex(words.length);else{setIndex(index+1);setSelected(null);answeredRef.current=false}}
+  if(index===words.length)return <Complete title={`${score} / ${words.length} 問正解`} count={words.length} restart={restart} restartLabel={restartLabel} detail={directionLabel}/>
+  return <section className={`study quiz ${reverse ? 'quiz-reverse' : ''}`}>
+    <StudyHeader title="4択クイズ" index={index} total={words.length} label={label}/>
+    <div className="quiz-direction">
+      <label htmlFor="quiz-direction">クイズの向き</label>
+      <select id="quiz-direction" value={direction} onChange={event=>onDirectionChange(event.target.value)}>
+        <option value="en-ja">英語 → 日本語</option>
+        <option value="ja-en">日本語 → 英語</option>
+      </select>
+      <small>切り替えると1問目から始まります。回答済みの記録は残ります。</small>
+    </div>
+    <div className="question">
+      <span>{reverse ? 'この日本語に合う英語は？' : 'この英単語の意味は？'}</span>
+      <strong lang={reverse ? 'ja' : 'en'}>{reverse ? word.japanese : word.english}</strong>
+      {(!reverse || selected) && <button className="sound" onClick={()=>speak(word.english)} aria-label={reverse ? '正解の発音を聞く' : '発音を聞く'}><Icon name="sound"/></button>}
+    </div>
+    <div className="options">{options.map((option,i)=><button key={option.id} disabled={selected !== null} onClick={()=>choose(option)} className={selected?(option.id===word.id?'correct':option.id===selected?'wrong':'dim'):''}><span>{String.fromCharCode(65+i)}</span><b lang={reverse ? 'en' : 'ja'}>{reverse ? option.english : option.japanese}</b></button>)}</div>
+    {selected && <>
+      <p className={`quiz-feedback ${selected===word.id ? 'ok' : 'ng'}`} role="status">{selected===word.id ? '正解！' : 'もう一度覚えよう'}　正解：{reverse ? word.english : word.japanese}</p>
+      <button className="button primary next" onClick={next}>{index===words.length-1?'結果を見る':'次の問題'}</button>
+    </>}
+  </section>
 }
 
 function Typing({ words, saveResult, restart, restartLabel, label }) {
@@ -233,8 +268,8 @@ function WordList({ progress, words, label }) {
   return <section className="word-list"><div className="list-head"><div><h1>単語一覧</h1><p>{label} · {words.length}語・句</p></div><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="英語・日本語で検索"/></div><div className="rows">{shown.map(w=><div className="word-row" key={w.id}><button onClick={()=>speak(w.english)}><Icon name="sound" size={20}/></button><div><strong>{w.english}</strong><span>{w.japanese}</span></div><em className={`status-badge ${wordStatus(progress[w.id])}`}>{STATUS_LABELS[wordStatus(progress[w.id])]}</em></div>)}</div></section>
 }
 
-function Complete({ title, count, restart, restartLabel }) {
-  return <section className="complete"><div className="complete-mark"><Icon name="leaf" size={48}/></div><h1>{title}</h1><p>{count}語の学習記録を保存しました。</p><button className="button primary" onClick={restart}><Icon name="refresh"/>{restartLabel}</button></section>
+function Complete({ title, count, restart, restartLabel, detail }) {
+  return <section className="complete"><div className="complete-mark"><Icon name="leaf" size={48}/></div><h1>{title}</h1>{detail && <p>{detail}</p>}<p>{count}語の学習記録を保存しました。</p><button className="button primary" onClick={restart}><Icon name="refresh"/>{restartLabel}</button></section>
 }
 
 export default App
