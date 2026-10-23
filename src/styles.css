@@ -120,11 +120,11 @@ summary { cursor: pointer; font-weight: 700; line-height: 1.7; }
   .trainer .quiz-direction label { font-size: 12px; }
   .trainer .quiz-direction select { min-height: 36px; padding: 4px 20px 4px 8px; font-size: 14px; }
   .trainer .quiz-direction small { display: none; }
-  .trainer .question { padding: 4px 24px; }
+  .trainer .question { flex: 0 1 clamp(80px, 18dvh, 150px); min-height: min-content; display: flex; flex-direction: column; justify-content: center; padding: 4px 24px; }
   .trainer .question > span { display: none; }
   .trainer .question > strong { padding: 0 12px; font-size: 28px; line-height: 1.3; }
   .trainer.quiz-reverse .question > strong { font-size: 21px; }
-  .trainer .question .sound { top: 0; right: -8px; }
+  .trainer .question .sound { top: 50%; right: -8px; transform: translateY(-50%); }
   .trainer .options { grid-template-columns: 1fr 1fr; gap: 8px; }
   .trainer .options button { min-height: 58px; padding: 8px; gap: 6px; font-size: 13px; }
   .trainer .options button > span { flex-basis: 24px; height: 24px; font-size: 12px; }
@@ -148,6 +148,10 @@ summary { cursor: pointer; font-weight: 700; line-height: 1.7; }
   .trainer .feedback { padding: 8px; gap: 3px; }
   .trainer .typing-card { gap: 5px; padding: 2px 0; }
   .trainer .typing-card > strong { font-size: 21px; }
+}
+@media(max-width:360px) {
+  .trainer .feedback .retry-input { font-size: 11px; padding-inline: 6px; gap: 4px; white-space: nowrap; }
+  .trainer .feedback .retry-input svg { width: 18px; flex-shrink: 0; }
 }
 @media(min-width:761px) {
   .welcome { padding: 28px 26px; }
