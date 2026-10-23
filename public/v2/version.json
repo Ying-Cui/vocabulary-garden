@@ -1,0 +1,21 @@
+{
+  "version": "2.3.0",
+  "sourceCommit": "44df301c8dbc244e4f78999346be7326d8ca5794",
+  "sourceBranch": "codex/v2-new-vocabulary",
+  "entry": "./index.html",
+  "files": {
+    "assets/index-Bu8lonCo.css": "9e94127ad8691e1a8f0a2b81ef02afc399a1d2a4bbce2cbe9c7e68342725e40f",
+    "assets/index-DbmdBUes.js": "f115cd0de27565a8ae979b30fa88a4b226264932a1ab8285554500210dfc381b",
+    "downloads/vocabulary-garden-v2.3.0-source.zip": "c9a6222e129594eb76688f9e962810016efab902e904016cb7722ce7f2de2aa8",
+    "downloads/vocabulary-garden-v2.3.0.zip": "95b4a04bbafd19cc2fc01d717790701f7f85c13dafa8d794c39f583993feac23",
+    "icon-maskable.svg": "1cd5de08fdac155b32b2fb218507a659b71446e2cea921b9fcad96cb0238232d",
+    "icon.svg": "c40fdbc2ec2902cb3adfb688b06864706113ad5d208766026b30f908c30120c1",
+    "icons/apple-touch-icon.png": "f5a0a03381ab876c0f864cb5daa3ba61a912e0d5022e9b757bd43e4e9b68845f",
+    "icons/icon-192.png": "d370fb94bf0e8b46a448f721b51b6c27afdb4fc640ba99503ab85022ecdf6439",
+    "icons/icon-512.png": "479eba51345336fee3bf66add4c2d4c95d1d517a9e28417645e6641136feeabb",
+    "icons/icon-maskable-512.png": "e7b659f9700b9f683e346f87406267eecb6b664da04b4d91e3433edc9576c7df",
+    "index.html": "1228169c198f21808b1d96a9bdb56bf085dfc1f38bbe82f3ecc40c2f2cff9681",
+    "manifest.webmanifest": "98516e18ca706dadbe17b774625b6278cceedb8533709656657a781148b00070",
+    "sw.js": "6c9eda6f2094a2d9f7e281be5489da1e5d466f9b1ead2f0282a37c234e18ab04"
+  }
+}

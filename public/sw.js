@@ -44,6 +44,8 @@ self.addEventListener('fetch', (event) => {
   const request = event.request;
   const requestUrl = new URL(request.url);
   if (request.method !== 'GET' || requestUrl.origin !== self.location.origin) return;
+  // The separately published v2 owns its navigation, assets and offline cache.
+  if (requestUrl.pathname.startsWith(new URL('./v2/', APP_ROOT).pathname)) return;
 
   if (request.mode === 'navigate') {
     event.respondWith((async () => {
