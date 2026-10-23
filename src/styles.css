@@ -85,6 +85,70 @@ summary { cursor: pointer; font-weight: 700; line-height: 1.7; }
 .status-badge.weak { color: #a93c2d; background: #fff0ed; }
 .status-badge.unseen { color: #536273; background: #f0f2f4; }
 .storage-warning { padding: 12px 20px; color: #a93c2d; background: #fff0ed; font-size: 14px; margin: 0; }
+/* Keep the active learning controls inside Safari's visible viewport. The home
+   settings and word list remain scrollable; enlarged text can still scroll. */
+@media(max-width:760px) {
+  .app-shell { min-height: 0; grid-template-rows: calc(48px + env(safe-area-inset-top, 0px)) minmax(0, 1fr) calc(58px + env(safe-area-inset-bottom, 0px)); }
+  .header { padding: env(safe-area-inset-top, 0px) 16px 0; }
+  .brand { font-size: 20px; }
+  .nav { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .study.trainer { height: 100%; min-height: 0; padding: 10px 16px 14px; gap: 8px; }
+  .trainer > * { flex-shrink: 0; }
+  .trainer .session-label { margin: 0 0 4px; font-size: 11px; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .trainer .study-head h1 { margin: 0 8px 6px 0; font-size: 17px; line-height: 1.4; }
+  .trainer .study-head span { white-space: nowrap; }
+  .trainer .learning-stage { margin: 0; padding: 5px 10px; font-size: 12px; }
+  .trainer .flashcard { flex: 1 0 110px; min-height: 110px; width: calc(100% - 8px); margin: 4px auto 10px; box-shadow: 4px 6px 0 #faf9f5,5px 7px 0 1px #d8d6cf,0 8px 18px rgba(30,45,55,.08); }
+  .trainer .flashcard > span { top: 12px; left: 16px; font-size: 13px; }
+  .trainer .flashcard strong { font-size: clamp(28px, 9vw, 40px); line-height: 1.25; overflow-wrap: anywhere; }
+  .trainer .flashcard.flipped strong { font-size: clamp(22px, 6vw, 30px); }
+  .trainer .flashcard small { bottom: 12px; font-size: 12px; }
+  .trainer .flashcard em { bottom: 30%; height: 5px; }
+  .trainer .flashcard .sound { top: 3px; right: 8px; }
+  .trainer .button { min-height: 44px; padding: 8px 12px; font-size: 14px; border-radius: 10px; }
+  .trainer .answer-actions { gap: 8px; }
+  .trainer > .feedback { margin: 0; padding: 10px 12px; gap: 5px; font-size: 14px; }
+  .trainer .feedback .button { margin-top: 3px; }
+  .trainer .practice-note { font-size: 11px; line-height: 1.4; }
+  .trainer .feedback:has(.retry-input) { grid-template-columns: 1fr 1fr; }
+  .trainer .feedback > :not(button) { grid-column: 1 / -1; }
+  .trainer .feedback { grid-template-columns: auto minmax(0, 1fr); }
+  .trainer .feedback > b, .trainer .feedback > span { grid-column: auto; align-self: center; }
+  .trainer .feedback > .primary:only-of-type { grid-column: 1 / -1; }
+  .trainer .feedback .retry-input { gap: 5px; font-size: 12px; }
+  .trainer .quiz-direction { margin: 0; gap: 3px 8px; grid-template-columns: auto minmax(0, 1fr); }
+  .trainer .quiz-direction label { font-size: 12px; }
+  .trainer .quiz-direction select { min-height: 36px; padding: 4px 20px 4px 8px; font-size: 14px; }
+  .trainer .quiz-direction small { display: none; }
+  .trainer .question { padding: 4px 24px; }
+  .trainer .question > span { display: none; }
+  .trainer .question > strong { padding: 0 12px; font-size: 28px; line-height: 1.3; }
+  .trainer.quiz-reverse .question > strong { font-size: 21px; }
+  .trainer .question .sound { top: 0; right: -8px; }
+  .trainer .options { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .trainer .options button { min-height: 58px; padding: 8px; gap: 6px; font-size: 13px; }
+  .trainer .options button > span { flex-basis: 24px; height: 24px; font-size: 12px; }
+  .trainer.quiz-reverse .options button b { font-size: 17px; }
+  .trainer .typing-card { margin: 0 auto; padding: 6px 0; gap: 8px; }
+  .trainer .typing-card > span { font-size: 12px; }
+  .trainer .typing-card > strong { margin: 4px 0; font-size: 24px; line-height: 1.3; }
+  .trainer .typing-card input { height: 46px; padding: 0 12px; font-size: 18px; }
+  .trainer .answer-hint { margin: 0; font-size: 18px; }
+  .trainer .input-actions { gap: 4px 14px; }
+  .trainer .text-button { padding: 5px 4px; min-height: 36px; font-size: 12px; }
+  .complete { padding: 16px; overflow: auto; }
+  .complete h1 { font-size: 23px; }
+}
+@media(max-width:760px) and (max-height:680px) {
+  .study.trainer { gap: 5px; padding: 8px 12px; }
+  .trainer .learning-stage { padding: 3px 8px; font-size: 11px; }
+  .trainer .study-head h1 { font-size: 16px; margin-bottom: 4px; }
+  .trainer .options { gap: 6px; }
+  .trainer .options button { min-height: 50px; padding: 6px; font-size: 12px; }
+  .trainer .feedback { padding: 8px; gap: 3px; }
+  .trainer .typing-card { gap: 5px; padding: 2px 0; }
+  .trainer .typing-card > strong { font-size: 21px; }
+}
 @media(min-width:761px) {
   .welcome { padding: 28px 26px; }
   .welcome > .edition-note { margin-bottom: 14px; }

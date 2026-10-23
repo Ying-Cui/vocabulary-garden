@@ -1,5 +1,5 @@
 const CACHE_PREFIX = `vocabulary-garden-v2:${new URL(self.registration.scope).pathname}:`;
-const CACHE_NAME = `${CACHE_PREFIX}p93-115-5`;
+const CACHE_NAME = `${CACHE_PREFIX}p93-115-6`;
 const APP_ROOT = new URL('./', self.registration.scope);
 const INDEX_URL = new URL('./index.html', APP_ROOT);
 const CORE_URLS = [

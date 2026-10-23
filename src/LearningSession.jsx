@@ -33,6 +33,7 @@ export default function LearningSession({ words, pool, progress, plan, direction
   function answer(correct, optionId = null) {
     if (locked.current || result !== null) return
     locked.current = true
+    inputRef.current?.blur()
     setSelected(optionId)
     setResult(correct)
     if (firstResult === null) {
@@ -79,7 +80,7 @@ export default function LearningSession({ words, pool, progress, plan, direction
   const title = plan === 'review' ? '今日の自動学習' : plan === 'guided' ? '段階学習' : plan === 'mixed' ? '写真を混ぜた実力テスト' : mode === 'card' ? 'カードで学習' : mode === 'quiz' ? '4択クイズ' : '入力テスト'
   const isInput = mode === 'hint' || mode === 'write'
   const englishAnswer = mode !== 'quiz' || reverse
-  return <section className={`study trainer ${mode === 'quiz' ? 'quiz' : ''} ${reverse && mode === 'quiz' ? 'quiz-reverse' : ''}`}>
+  return <section className={`study trainer ${result !== null ? 'answered' : ''} ${mode === 'quiz' ? 'quiz' : ''} ${reverse && mode === 'quiz' ? 'quiz-reverse' : ''}`}>
     <StudyHeader title={title} index={index} total={queue.length} label={label}/>
     <p className="learning-stage" role="note">{item.replay ? '少し後の再テスト' : item.filler ? '間を空けるための復習' : MODES[mode]}{(item.replay || item.filler) && ' · 定着回数には含めません'}</p>
     {plan === 'quiz' && <div className="quiz-direction"><label htmlFor="quiz-direction">クイズの向き</label>
