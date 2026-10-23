@@ -1,8 +1,20 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { WORDS, STORAGE_KEY } from './data.js'
 import { acceptsAnswer, createOptions } from './study.js'
+import { recordAnswer, summarizeProgress, wordStatus } from './progress.js'
+import { photoSets, scopeWords } from './scopes.js'
 
 const BATCH_SIZE = 20
+const PHOTO_SETS = photoSets(WORDS)
+const SCOPE_KEY = `${STORAGE_KEY}-scope`
+const STATUS_LABELS = { mastered: '覚えた', weak: '苦手', unseen: '未学習' }
+
+function loadScope() {
+  try {
+    const saved = localStorage.getItem(SCOPE_KEY)
+    return PHOTO_SETS.some(photo => photo.id === saved) ? saved : 'all'
+  } catch { return 'all' }
+}
 
 const icons = {
   home: <><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V21h13V9.5M9 21v-7h6v7"/></>,
@@ -21,7 +33,10 @@ function Icon({ name, size = 24 }) {
 }
 
 function loadProgress() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {} } catch { return {} }
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY))
+    return saved && typeof saved === 'object' && !Array.isArray(saved) ? saved : {}
+  } catch { return {} }
 }
 
 function shuffle(items) {
@@ -50,55 +65,85 @@ function App() {
   const [screen, setScreen] = useState('home')
   const [session, setSession] = useState(0)
   const [progress, setProgress] = useState(loadProgress)
-  const [batch, setBatch] = useState(() => shuffle(WORDS).slice(0, BATCH_SIZE))
+  const [scope, setScope] = useState(loadScope)
+  const [storageError, setStorageError] = useState(false)
+  const [batch, setBatch] = useState([])
+  const [sessionInfo, setSessionInfo] = useState({ weakOnly: false, label: '' })
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress))
+      localStorage.setItem(SCOPE_KEY, scope)
+      setStorageError(false)
+    } catch { setStorageError(true) }
+  }, [progress, scope])
 
   const saveResult = useCallback((word, correct) => {
-    setProgress(prev => {
-      const current = prev[word.id] || { seen: 0, correct: 0, wrong: 0 }
-      const next = { ...prev, [word.id]: { seen: current.seen + 1, correct: current.correct + (correct ? 1 : 0), wrong: current.wrong + (correct ? 0 : 1) } }
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
-      return next
-    })
+    setProgress(previous => recordAnswer(previous, word, correct))
   }, [])
+  const selectedWords = useMemo(() => scopeWords(WORDS, scope), [scope])
+  const summary = useMemo(() => summarizeProgress(WORDS, progress), [progress])
+  const weakWords = useMemo(() => selectedWords.filter(word => wordStatus(progress[word.id]) === 'weak'), [selectedWords, progress])
+  const selectedPhoto = PHOTO_SETS.find(photo => photo.id === scope)
+  const scopeLabel = selectedPhoto ? `${selectedPhoto.label} · ${selectedWords.length}語・句` : '全体からランダム20語'
 
-  const weakWords = useMemo(() => WORDS.filter(w => (progress[w.id]?.wrong || 0) > 0).sort((a,b) => (progress[b.id].wrong-progress[b.id].correct)-(progress[a.id].wrong-progress[a.id].correct)), [progress])
-  const mastered = useMemo(() => Object.values(progress).filter(v => v.correct >= 2 && v.correct > v.wrong).length, [progress])
-  const studied = Object.keys(progress).length
-
-  const start = (target, weakOnly=false) => {
-    const pool = weakOnly && weakWords.length ? weakWords : WORDS
-    setBatch(shuffle(pool).slice(0, Math.min(BATCH_SIZE, pool.length)))
+  const start = (target, weakOnly = false) => {
+    const pool = weakOnly ? weakWords : selectedWords
+    const nextWords = scope === 'all' ? shuffle(pool).slice(0, BATCH_SIZE) : [...pool]
+    setBatch(nextWords)
+    setSessionInfo({ weakOnly, label: `${scopeLabel}${weakOnly ? ' · 苦手復習' : ''}` })
     setSession(value => value + 1)
     setScreen(target)
   }
+  const restart = () => start(screen, sessionInfo.weakOnly)
+  const restartLabel = sessionInfo.weakOnly ? '残っている苦手をもう一度' : scope === 'all' ? '別の20語でもう一度' : '同じ写真でもう一度'
+  const studyProps = { words: batch, saveResult, restart, restartLabel, label: sessionInfo.label }
 
-  const content = screen === 'home' ? <Home {...{studied, mastered, weakWords, start, setScreen}} />
-    : screen === 'card' ? <Cards key={session} words={batch} saveResult={saveResult} restart={()=>start('card')} />
-    : screen === 'quiz' ? <Quiz key={session} words={batch} saveResult={saveResult} restart={()=>start('quiz')} />
-    : screen === 'write' ? <Typing key={session} words={batch} saveResult={saveResult} restart={()=>start('write')} />
-    : <WordList progress={progress} />
+  const content = screen === 'home' ? <Home {...{summary, weakWords, start, setScreen, scope, setScope, selectedPhoto, scopeLabel}} />
+    : screen === 'list' ? <WordList progress={progress} words={selectedWords} label={scopeLabel} />
+    : !batch.length ? <section className="complete"><Icon name="check" size={48}/><h1>この範囲に苦手な単語はありません</h1><p>学ぶ範囲を選んで、次の学習へ進みましょう。</p><button className="button primary" onClick={()=>setScreen('home')}>ホームへ戻る</button></section>
+    : screen === 'card' ? <Cards key={session} {...studyProps} />
+    : screen === 'quiz' ? <Quiz key={session} {...studyProps} />
+    : <Typing key={session} {...studyProps} />
 
-  return <div className="app-shell"><Header/><main>{content}</main><Nav screen={screen} onChange={id=>id==='home'?setScreen('home'):start(id)}/></div>
+  return <div className="app-shell"><Header/><main>{storageError && <p className="storage-warning" role="alert">学習記録を端末に保存できません。ブラウザの保存設定をご確認ください。</p>}{content}</main><Nav screen={screen} onChange={id=>id==='home'?setScreen('home'):start(id)}/></div>
 }
 
-function Home({ studied, mastered, weakWords, start, setScreen }) {
-  const pct = Math.round(studied / WORDS.length * 100)
+function Home({ summary, weakWords, start, setScreen, scope, setScope, selectedPhoto, scopeLabel }) {
   return <section className="home-layout">
     <div className="welcome">
-      <h1>今日の20語</h1><p className="edition-note">v2 · p.93–115 · 新しい200語・句</p><p>毎回ランダムに選ばれた20語を、何回かに分けて学習できます。</p>
+      <h1>{selectedPhoto ? `${selectedPhoto.label}の${selectedPhoto.count}語` : '今日の20語'}</h1>
+      <p className="edition-note">v2 · p.93–115 · 全200語・句</p>
+      <div className="scope-picker">
+        <label htmlFor="study-scope">学ぶ範囲</label>
+        <select id="study-scope" value={scope} onChange={event=>setScope(event.target.value)}>
+          <option value="all">全体からランダム20語</option>
+          {PHOTO_SETS.map(photo=><option key={photo.id} value={photo.id}>{photo.label}：{photo.first} ～ {photo.last}（{photo.count}語）</option>)}
+        </select>
+        <p>{selectedPhoto ? `${selectedPhoto.filename} · p.${selectedPhoto.pages[0]}${selectedPhoto.pages.length > 1 ? `–${selectedPhoto.pages.at(-1)}` : ''}。写真の掲載順に学習します。` : 'ランダムな20語、または単語表の写真15枚から選べます。'}</p>
+      </div>
       <div className="home-actions">
         <button className="button primary" onClick={()=>start('card')}><Icon name="card"/>学習をはじめる<span>›</span></button>
-        <button className="button secondary" onClick={()=>start('card',true)} disabled={!weakWords.length}><Icon name="refresh"/>苦手を復習<span>›</span></button>
+        <button className="button secondary" onClick={()=>start('card',true)} disabled={!weakWords.length}><Icon name="refresh"/>苦手を復習（{weakWords.length}語）<span>›</span></button>
         <button className="button secondary" onClick={()=>setScreen('list')}><Icon name="list"/>単語一覧<span>›</span></button>
       </div>
-      <div className="record"><div className="record-head"><div><h2>学習の記録</h2><span>登録単語の進み具合</span></div><strong>{studied} <small>/ {WORDS.length}語</small></strong></div><ProgressBar value={studied} max={WORDS.length}/><div className="record-stats"><span><i className="dot green"/>覚えた <b>{mastered}語</b></span><span><i className="dot coral"/>苦手 <b>{weakWords.length}語</b></span></div></div>
+      <p className="scope-help">カード・クイズ・入力テストは、選んだ範囲から出題します。</p>
+      <div className="record">
+        <div className="record-head"><div><h2>全体の学習記録</h2><span>覚えた単語の割合</span></div><strong>{summary.mastered} <small>/ {WORDS.length}語</small></strong></div>
+        <ProgressBar value={summary.mastered} max={WORDS.length}/>
+        <div className="record-stats" aria-label="学習状況の内訳">
+          {['mastered','weak','unseen'].map(status=><span key={status}><i className={`dot ${status}`}/>{STATUS_LABELS[status]}<b>{summary[status]}語</b></span>)}
+        </div>
+        <p className="record-total">{summary.mastered} ＋ {summary.weak} ＋ {summary.unseen} ＝ {WORDS.length}語</p>
+        <p className="record-help">直近の回答が正解なら「覚えた」、不正解なら「苦手」。再入力は練習のため記録に加算しません。</p>
+      </div>
     </div>
-    <div className="home-preview"><div className="preview-title"><span>カードで学習</span><span>1 / 20</span></div><ProgressBar value={1} max={20}/><div className="demo-card"><span>表面</span><strong>medicine</strong><em/></div><p>カードをタップして意味を確認</p></div>
+    <div className="home-preview"><div className="preview-title"><span>カードで学習</span><span>{selectedPhoto ? `${selectedPhoto.count}語` : '20語'}</span></div><p className="preview-scope">{scopeLabel}</p><div className="demo-card"><span>表面</span><strong>{selectedPhoto ? selectedPhoto.first : 'medicine'}</strong><em/></div><p>カードをタップして意味を確認</p></div>
   </section>
 }
 
-function StudyHeader({ title, index, total }) {
-  return <div className="study-head"><div><h1>{title}</h1><span>{index + 1} / {total}</span></div><ProgressBar value={index + 1} max={total}/></div>
+function StudyHeader({ title, index, total, label }) {
+  return <div className="study-head"><p className="session-label">{label}</p><div><h1>{title}</h1><span>{index + 1} / {total}</span></div><ProgressBar value={index + 1} max={total}/></div>
 }
 
 function speak(word) {
@@ -107,41 +152,89 @@ function speak(word) {
   utterance.lang = 'en-US'; utterance.rate = .82; speechSynthesis.speak(utterance)
 }
 
-function Cards({ words, saveResult, restart }) {
+function Cards({ words, saveResult, restart, restartLabel, label }) {
   const [index, setIndex] = useState(0), [flipped, setFlipped] = useState(false), [done, setDone] = useState(false)
   const word = words[index]
   const answer = correct => { saveResult(word, correct); if(index === words.length-1) setDone(true); else {setIndex(index+1); setFlipped(false)} }
-  if(done) return <Complete title="カード学習が終わりました" count={words.length} restart={restart}/>
-  return <section className="study"><StudyHeader title="カードで学習" index={index} total={words.length}/><div className={`flashcard ${flipped?'flipped':''}`} role="button" tabIndex="0" onClick={()=>setFlipped(!flipped)} onKeyDown={e=>(e.key==='Enter'||e.key===' ')&&setFlipped(!flipped)} aria-label="カードをめくる"><span>{flipped?'意味':'表面'}</span><button className="sound" onClick={e=>{e.stopPropagation();speak(word.english)}} aria-label="発音を聞く"><Icon name="sound"/></button><strong>{flipped?word.japanese:word.english}</strong><em/><small>{flipped?'もう一度タップで英語へ':'タップして意味を見る'}</small></div><div className="answer-actions"><button className="button retry" onClick={()=>answer(false)}><Icon name="refresh"/>もう一度</button><button className="button primary" onClick={()=>answer(true)}><Icon name="check"/>覚えた</button></div></section>
+  if(done) return <Complete title="カード学習が終わりました" count={words.length} restart={restart} restartLabel={restartLabel}/>
+  return <section className="study"><StudyHeader title="カードで学習" index={index} total={words.length} label={label}/><div className={`flashcard ${flipped?'flipped':''}`} role="button" tabIndex="0" onClick={()=>setFlipped(!flipped)} onKeyDown={e=>(e.key==='Enter'||e.key===' ')&&setFlipped(!flipped)} aria-label="カードをめくる"><span>{flipped?'意味':'表面'}</span><button className="sound" onClick={e=>{e.stopPropagation();speak(word.english)}} aria-label="発音を聞く"><Icon name="sound"/></button><strong>{flipped?word.japanese:word.english}</strong><em/><small>{flipped?'もう一度タップで英語へ':'タップして意味を見る'}</small></div><div className="answer-actions"><button className="button retry" onClick={()=>answer(false)}><Icon name="refresh"/>もう一度</button><button className="button primary" onClick={()=>answer(true)}><Icon name="check"/>覚えた</button></div></section>
 }
 
-function Quiz({ words, saveResult, restart }) {
+function Quiz({ words, saveResult, restart, restartLabel, label }) {
   const [index,setIndex]=useState(0),[score,setScore]=useState(0),[selected,setSelected]=useState(null)
   const word=words[index]
   const options=useMemo(()=>word ? createOptions(word, WORDS) : [],[word])
   const choose = option => { if(selected) return; setSelected(option.id); const ok=option.id===word.id; if(ok)setScore(score+1); saveResult(word,ok) }
   const next=()=>{if(index===words.length-1)setIndex(words.length);else{setIndex(index+1);setSelected(null)}}
-  if(index===words.length)return <Complete title={`${score} / ${words.length} 問正解`} count={words.length} restart={restart}/>
-  return <section className="study quiz"><StudyHeader title="4択クイズ" index={index} total={words.length}/><div className="question"><span>この英単語の意味は？</span><strong>{word.english}</strong><button className="sound" onClick={()=>speak(word.english)}><Icon name="sound"/></button></div><div className="options">{options.map((o,i)=><button key={o.id} onClick={()=>choose(o)} className={selected?(o.id===word.id?'correct':o.id===selected?'wrong':'dim'):''}><span>{String.fromCharCode(65+i)}</span>{o.japanese}</button>)}</div>{selected&&<button className="button primary next" onClick={next}>{index===words.length-1?'結果を見る':'次の問題'}</button>}</section>
+  if(index===words.length)return <Complete title={`${score} / ${words.length} 問正解`} count={words.length} restart={restart} restartLabel={restartLabel}/>
+  return <section className="study quiz"><StudyHeader title="4択クイズ" index={index} total={words.length} label={label}/><div className="question"><span>この英単語の意味は？</span><strong>{word.english}</strong><button className="sound" onClick={()=>speak(word.english)}><Icon name="sound"/></button></div><div className="options">{options.map((o,i)=><button key={o.id} onClick={()=>choose(o)} className={selected?(o.id===word.id?'correct':o.id===selected?'wrong':'dim'):''}><span>{String.fromCharCode(65+i)}</span>{o.japanese}</button>)}</div>{selected&&<button className="button primary next" onClick={next}>{index===words.length-1?'結果を見る':'次の問題'}</button>}</section>
 }
 
-function Typing({ words, saveResult, restart }) {
-  const [index,setIndex]=useState(0),[value,setValue]=useState(''),[result,setResult]=useState(null),[score,setScore]=useState(0)
-  const word=words[index]
-  const check=e=>{e.preventDefault();if(result!==null)return;const ok=acceptsAnswer(value,word,WORDS);setResult(ok);if(ok)setScore(score+1);saveResult(word,ok)}
-  const next=()=>{if(index===words.length-1)setIndex(words.length);else{setIndex(index+1);setValue('');setResult(null)}}
-  if(index===words.length)return <Complete title={`${score} / ${words.length} 問正解`} count={words.length} restart={restart}/>
-  return <section className="study typing"><StudyHeader title="入力テスト" index={index} total={words.length}/><form className="typing-card" onSubmit={check}><span>英語で入力してください</span><strong>{word.japanese}</strong><input autoFocus autoComplete="off" spellCheck="false" value={value} onChange={e=>setValue(e.target.value)} placeholder="答えを入力" aria-label="英単語の答え"/><button className="button primary" type="submit" disabled={!value.trim()||result!==null}>答え合わせ</button>{result!==null&&<div className={`feedback ${result?'ok':'ng'}`}><b>{result?'正解！':'もう一度覚えよう'}</b>{!result&&<span>正解：{word.english}</span>}<button type="button" className="button primary" onClick={next}>{index===words.length-1?'結果を見る':'次の問題'}</button></div>}</form></section>
+function Typing({ words, saveResult, restart, restartLabel, label }) {
+  const [index, setIndex] = useState(0)
+  const [value, setValue] = useState('')
+  const [result, setResult] = useState(null)
+  const [firstResult, setFirstResult] = useState(null)
+  const [score, setScore] = useState(0)
+  const inputRef = useRef(null)
+  const submittedRef = useRef(false)
+  const word = words[index]
+  const practice = firstResult !== null
+
+  const check = event => {
+    event.preventDefault()
+    if (submittedRef.current || result !== null || !value.trim()) return
+    submittedRef.current = true
+    const correct = acceptsAnswer(value, word, WORDS)
+    setResult(correct)
+    if (firstResult === null) {
+      setFirstResult(correct)
+      if (correct) setScore(previous => previous + 1)
+      saveResult(word, correct)
+    }
+  }
+  const retry = () => {
+    setValue('')
+    setResult(null)
+    submittedRef.current = false
+    inputRef.current?.focus()
+  }
+  const next = () => {
+    setIndex(previous => previous + 1)
+    setValue('')
+    setResult(null)
+    setFirstResult(null)
+    submittedRef.current = false
+    inputRef.current?.focus()
+  }
+
+  if (!word) return <Complete title={`初回の結果：${score} / ${words.length} 問正解`} count={words.length} restart={restart} restartLabel={restartLabel}/>
+  return <section className="study typing">
+    <StudyHeader title="入力テスト" index={index} total={words.length} label={label}/>
+    <form className="typing-card" onSubmit={check}>
+      <span>{practice && result === null ? 'もう一度、英語で入力してみましょう' : '英語で入力してください'}</span>
+      <strong>{word.japanese}</strong>
+      <input ref={inputRef} autoFocus autoComplete="off" autoCapitalize="none" spellCheck="false" readOnly={result !== null} value={value} onChange={event=>setValue(event.target.value)} placeholder="答えを入力" aria-label="英単語の答え"/>
+      <button className="button primary" type="submit" disabled={!value.trim() || result !== null}>答え合わせ</button>
+      {practice && <p className="practice-note">再入力は練習です。初回の得点・学習記録は変わりません。</p>}
+      {result !== null && <div className={`feedback ${result ? 'ok' : 'ng'}`} aria-live="polite">
+        <b>{result ? '正解！' : 'もう一度覚えよう'}</b>
+        {!result && <span>正解：{word.english}</span>}
+        <button type="button" className="button secondary retry-input" onClick={retry}><Icon name="refresh"/>もう一度入力する</button>
+        <button type="button" className="button primary" onClick={next}>{index === words.length - 1 ? '結果を見る' : '次の問題'}</button>
+      </div>}
+    </form>
+  </section>
 }
 
-function WordList({ progress }) {
+function WordList({ progress, words, label }) {
   const [query,setQuery]=useState('')
-  const shown=useMemo(()=>WORDS.filter(w=>(w.english+' '+w.japanese).toLocaleLowerCase().includes(query.toLocaleLowerCase())),[query])
-  return <section className="word-list"><div className="list-head"><div><h1>単語一覧</h1><p>p.93–115 · {WORDS.length}語・句（同じ綴りの別の意味も収録）</p></div><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="英語・日本語で検索"/></div><div className="rows">{shown.map(w=><div className="word-row" key={w.id}><button onClick={()=>speak(w.english)}><Icon name="sound" size={20}/></button><div><strong>{w.english}</strong><span>{w.japanese}</span></div>{progress[w.id]?.wrong>0&&<em>復習</em>}</div>)}</div></section>
+  const shown=useMemo(()=>words.filter(w=>(w.english+' '+w.japanese).toLocaleLowerCase().includes(query.toLocaleLowerCase())),[query, words])
+  return <section className="word-list"><div className="list-head"><div><h1>単語一覧</h1><p>{label} · {words.length}語・句</p></div><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="英語・日本語で検索"/></div><div className="rows">{shown.map(w=><div className="word-row" key={w.id}><button onClick={()=>speak(w.english)}><Icon name="sound" size={20}/></button><div><strong>{w.english}</strong><span>{w.japanese}</span></div><em className={`status-badge ${wordStatus(progress[w.id])}`}>{STATUS_LABELS[wordStatus(progress[w.id])]}</em></div>)}</div></section>
 }
 
-function Complete({ title, count, restart }) {
-  return <section className="complete"><div className="complete-mark"><Icon name="leaf" size={48}/></div><h1>{title}</h1><p>{count}語の学習記録を保存しました。</p><button className="button primary" onClick={restart}><Icon name="refresh"/>別の20語でもう一度</button></section>
+function Complete({ title, count, restart, restartLabel }) {
+  return <section className="complete"><div className="complete-mark"><Icon name="leaf" size={48}/></div><h1>{title}</h1><p>{count}語の学習記録を保存しました。</p><button className="button primary" onClick={restart}><Icon name="refresh"/>{restartLabel}</button></section>
 }
 
 export default App
