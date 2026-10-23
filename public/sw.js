@@ -1,4 +1,5 @@
-const CACHE_NAME = 'kotoba-garden-v2-p93-115-4';
+const CACHE_PREFIX = `vocabulary-garden-v2:${new URL(self.registration.scope).pathname}:`;
+const CACHE_NAME = `${CACHE_PREFIX}p93-115-5`;
 const APP_ROOT = new URL('./', self.registration.scope);
 const INDEX_URL = new URL('./index.html', APP_ROOT);
 const CORE_URLS = [
@@ -33,7 +34,7 @@ self.addEventListener('activate', (event) => {
     const cacheNames = await caches.keys();
     await Promise.all(
       cacheNames
-        .filter((name) => name.startsWith('kotoba-garden-') && name !== CACHE_NAME)
+        .filter((name) => name.startsWith(CACHE_PREFIX) && name !== CACHE_NAME)
         .map((name) => caches.delete(name))
     );
     await self.clients.claim();
@@ -43,7 +44,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const request = event.request;
   const requestUrl = new URL(request.url);
-  if (request.method !== 'GET' || requestUrl.origin !== self.location.origin) return;
+  if (request.method !== 'GET' || requestUrl.origin !== self.location.origin || !requestUrl.pathname.startsWith(APP_ROOT.pathname)) return;
 
   if (request.mode === 'navigate') {
     event.respondWith((async () => {
@@ -53,14 +54,16 @@ self.addEventListener('fetch', (event) => {
         await cache.put(INDEX_URL, response.clone());
         return response;
       } catch {
-        return (await caches.match(INDEX_URL)) || Response.error();
+        const cache = await caches.open(CACHE_NAME);
+        return (await cache.match(INDEX_URL)) || Response.error();
       }
     })());
     return;
   }
 
   event.respondWith((async () => {
-    const cached = await caches.match(request);
+    const currentCache = await caches.open(CACHE_NAME);
+    const cached = await currentCache.match(request);
     if (cached) return cached;
     try {
       const response = await fetch(request);
