@@ -1,21 +1,21 @@
 {
-  "version": "2.3.0",
-  "sourceCommit": "44df301c8dbc244e4f78999346be7326d8ca5794",
+  "version": "2.3.1",
+  "sourceCommit": "af3ab3e3c27fc6bdfba7e3bd5c004fe272935f29",
   "sourceBranch": "codex/v2-new-vocabulary",
   "entry": "./index.html",
   "files": {
-    "assets/index-Bu8lonCo.css": "9e94127ad8691e1a8f0a2b81ef02afc399a1d2a4bbce2cbe9c7e68342725e40f",
-    "assets/index-DbmdBUes.js": "f115cd0de27565a8ae979b30fa88a4b226264932a1ab8285554500210dfc381b",
-    "downloads/vocabulary-garden-v2.3.0-source.zip": "c9a6222e129594eb76688f9e962810016efab902e904016cb7722ce7f2de2aa8",
-    "downloads/vocabulary-garden-v2.3.0.zip": "95b4a04bbafd19cc2fc01d717790701f7f85c13dafa8d794c39f583993feac23",
+    "assets/index-CN9TEtU3.css": "8c926da406c3f6e13b06e63ae553c743788355697a076a142144eec2dfb94843",
+    "assets/index-CXWS3dab.js": "8cc84e783fe078d885e817bc9080ca7744ef0da8a5aa91aef961c021063ea98a",
+    "downloads/vocabulary-garden-v2.3.1-source.zip": "650dc23026fc1184bc578a286cc3a0d180ed1971f662e4a443ffd2e3350b0879",
+    "downloads/vocabulary-garden-v2.3.1.zip": "f70a64cfe8c0452fb52d9d81246270b0f83ee777f873db4e0cc1bcd36f1279a5",
     "icon-maskable.svg": "6aeb244cbceab341754141ba815a5da1118d8272d46275f51327ad111aa0c6de",
     "icon.svg": "56332ce204355b0e20df06a2fe577a072ac39f71a38e1b41306ae59d47c7fc8c",
     "icons/apple-touch-icon.png": "f5a0a03381ab876c0f864cb5daa3ba61a912e0d5022e9b757bd43e4e9b68845f",
     "icons/icon-192.png": "d370fb94bf0e8b46a448f721b51b6c27afdb4fc640ba99503ab85022ecdf6439",
     "icons/icon-512.png": "479eba51345336fee3bf66add4c2d4c95d1d517a9e28417645e6641136feeabb",
     "icons/icon-maskable-512.png": "e7b659f9700b9f683e346f87406267eecb6b664da04b4d91e3433edc9576c7df",
-    "index.html": "1228169c198f21808b1d96a9bdb56bf085dfc1f38bbe82f3ecc40c2f2cff9681",
+    "index.html": "ef36c20a884dcb866bf5f714fe7b5042a7b99dcc6cee5e7d8180c5f8b1d871ea",
     "manifest.webmanifest": "64adfa5864399b65d4902531d37ba1364376ea1e741336fe1dca9c228404eaee",
-    "sw.js": "ae2670b5853fa4d3622597be77416746d534faff489d6fdd892753cb6e1b9d89"
+    "sw.js": "eeb4f41aea4daa09d6f112e57f0b854e183a9161638629c7e6c30e241a6ae683"
   }
 }
