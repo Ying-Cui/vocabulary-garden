@@ -1,21 +1,21 @@
 {
-  "version": "2.3.1",
-  "sourceCommit": "af3ab3e3c27fc6bdfba7e3bd5c004fe272935f29",
+  "version": "2.3.2",
+  "sourceCommit": "04308b06b0164facd383173d9ffd1a51411b8d14",
   "sourceBranch": "codex/v2-new-vocabulary",
   "entry": "./index.html",
   "files": {
-    "assets/index-CN9TEtU3.css": "8c926da406c3f6e13b06e63ae553c743788355697a076a142144eec2dfb94843",
-    "assets/index-CXWS3dab.js": "8cc84e783fe078d885e817bc9080ca7744ef0da8a5aa91aef961c021063ea98a",
-    "downloads/vocabulary-garden-v2.3.1-source.zip": "650dc23026fc1184bc578a286cc3a0d180ed1971f662e4a443ffd2e3350b0879",
-    "downloads/vocabulary-garden-v2.3.1.zip": "f70a64cfe8c0452fb52d9d81246270b0f83ee777f873db4e0cc1bcd36f1279a5",
+    "assets/index-CWQ6OaMW.js": "8cc84e783fe078d885e817bc9080ca7744ef0da8a5aa91aef961c021063ea98a",
+    "assets/index-DGNtImIT.css": "ee29d156d159e8eef83eea9d2564d75085a93c0e76b5e90061f1972576ad7e32",
+    "downloads/vocabulary-garden-v2.3.2-source.zip": "07aa1eb044cf13696c25c92ecf4e49f334f3346672fed3721563f8b86553837c",
+    "downloads/vocabulary-garden-v2.3.2.zip": "70c3628cc3687fcda67ffd3f665f6ad4be1d188304d2b00156a96fc42e48f40c",
     "icon-maskable.svg": "6aeb244cbceab341754141ba815a5da1118d8272d46275f51327ad111aa0c6de",
     "icon.svg": "56332ce204355b0e20df06a2fe577a072ac39f71a38e1b41306ae59d47c7fc8c",
     "icons/apple-touch-icon.png": "f5a0a03381ab876c0f864cb5daa3ba61a912e0d5022e9b757bd43e4e9b68845f",
     "icons/icon-192.png": "d370fb94bf0e8b46a448f721b51b6c27afdb4fc640ba99503ab85022ecdf6439",
     "icons/icon-512.png": "479eba51345336fee3bf66add4c2d4c95d1d517a9e28417645e6641136feeabb",
     "icons/icon-maskable-512.png": "e7b659f9700b9f683e346f87406267eecb6b664da04b4d91e3433edc9576c7df",
-    "index.html": "ef36c20a884dcb866bf5f714fe7b5042a7b99dcc6cee5e7d8180c5f8b1d871ea",
+    "index.html": "164aec15f8e44350f783f8512f20d2e63cc859488fe5bb37d3067bef4a7d3ae7",
     "manifest.webmanifest": "64adfa5864399b65d4902531d37ba1364376ea1e741336fe1dca9c228404eaee",
-    "sw.js": "eeb4f41aea4daa09d6f112e57f0b854e183a9161638629c7e6c30e241a6ae683"
+    "sw.js": "e806dbd9e570ef80db45ba06972940458a9100270ebed26ac8826018af140a7b"
   }
 }
